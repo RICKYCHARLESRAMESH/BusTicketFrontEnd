@@ -1,0 +1,7 @@
+<form (submit)="UserRegister()">
+    <label>Enter User Name/Id</label>
+    <input type="text" [(ngModel)]="user.username" name="username" required/>
+    <label>Enter Password</label>
+    <input type="text" [(ngModel)]="user.password" name="password" required/>
+    <input type="submit" value="Register User" />
+</form>
