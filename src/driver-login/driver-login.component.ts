@@ -11,16 +11,28 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './driver-login.component.css'
 })
 export class DriverLoginComponent {
-    // constructor(private authenticationService: AuthenticationService){}
-    // user: user = {
-    //   username: '',
-    //   password: '',
-    //   role: ''
-    // }
-    // DriverLogin(){
-    //   this.authenticationService.DriverLoginComponent(this.user).subscribe((e)=>{
-    //     console.log(e);
-    //   })
-    // }
+
+  constructor(private authenticationService: AuthenticationService){}
+  user: user = {
+    username: '',
+    password: '',
+    role: ''
+  }
+  token:any;
+  DriverLogin(){
+    this.user.role="ROLE_DRIVER"
+    this.authenticationService.DriverLoginComponent(this.user).subscribe((e)=>{
+    this.token=e.token;
+    alert(JSON.stringify(e));
+    localStorage.setItem('token',this.token);
+    localStorage.setItem('role',this.user.role)
+    },
+    (error) => {
+      console.error('Error saving user:', error);
+      alert(JSON.stringify(error));
+    });
+    
+  }
+ 
 
 }

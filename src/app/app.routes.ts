@@ -14,11 +14,16 @@ export const routes: Routes = [
         component:UserLoginComponent
      },
      {
-        path: 'driver-login',
+        path: 'app-driver-login',
         component:DriverLoginComponent
      },
      {
         path: 'admin-login',
         component:AdminLoginComponent
-     }
+     },
+     {
+      path: 'user-register',
+      component:UserRegisterComponent
+   },
+     
 ];

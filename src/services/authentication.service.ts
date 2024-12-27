@@ -10,11 +10,11 @@ import { DriverLoginComponent } from '../driver-login/driver-login.component';
 })
 export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
-  RESTURL: String = "http://localhost:8300/api";
+  RESTURL: String = "http://localhost:8300/api/";
  
  
   UserLoginComponent(user:any):Observable<any>{
-    return this.httpClient.post(this.RESTURL+"userLogin",user,{
+    return this.httpClient.post(this.RESTURL+"auth",user,{
       responseType:'json'
     })
   }
@@ -26,18 +26,16 @@ export class AuthenticationService {
   }
  
   AdminLoginComponent(user:any):Observable<any>{
-    return this.httpClient.post(this.RESTURL+"adminRegister",user,{
+    return this.httpClient.post(this.RESTURL+"auth",user,{
       responseType:'json'
     })
   }
  
   DriverLoginComponent(user:any):Observable<any>{
-    return this.httpClient.post(this.RESTURL+"driverLogin",user,{
+    return this.httpClient.post(this.RESTURL+"auth",user,{
       responseType:'json'
     })
   }
  
  
 }
- 
- 
