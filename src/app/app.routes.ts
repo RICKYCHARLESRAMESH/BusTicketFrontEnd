@@ -4,6 +4,8 @@ import { UserRegisterComponent } from '../user-register/user-register.component'
 import { DriverLoginComponent } from '../driver-login/driver-login.component';
 import { AdminLoginComponent } from '../admin-login/admin-login.component';
 import { IndexComponent } from '../index/index.component';
+import { CustomerDashboardComponent } from '../UserModule/Components/customer-dashboard/customer-dashboard.component';
+import { TripComponent } from '../UserModule/Components/trip/trip.component';
 export const routes: Routes = [
     {
         path: '',
@@ -25,5 +27,13 @@ export const routes: Routes = [
       path: 'user-register',
       component:UserRegisterComponent
    },
+   {
+      path: 'customer-dashboard',
+      component:CustomerDashboardComponent
+   },
+   {
+      path: 'trip',
+      component: TripComponent
+   }
      
 ];

@@ -20,7 +20,7 @@ export class AuthenticationService {
   }
  
   UserRegisterComponent(user:any):Observable<any>{
-    return this.httpClient.post(this.RESTURL+"userRegister",user,{
+    return this.httpClient.post(this.RESTURL+"user/register",user,{
       responseType:'json'
     })
   }
