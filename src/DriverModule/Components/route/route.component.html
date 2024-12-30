@@ -1,0 +1,26 @@
+
+    <div class="table-container">
+        <h1>Available Routes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Route ID</th>
+                    <th>From City</th>
+                    <th>To City</th>
+                    <th>Break Points</th>
+                    <th>Duration (hrs)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let route of routes">
+                    <td>{{route.routeId }}</td>
+                    <td>{{route.fromCity}}</td>
+                    <td>{{route.toCity  }}</td>
+                    <td>{{route.breakPoints  }}</td>
+                    <td>{{route.duration  }}</td>
+                </tr>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+

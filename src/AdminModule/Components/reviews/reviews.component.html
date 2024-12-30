@@ -1,0 +1,47 @@
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            Admin Dashboard
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="agency">Agencies</a></li>
+                <li><a href="bus">Buses</a></li>
+                <li><a href="admin-customer">Customers</a></li>
+                <li><a href="drivers">Drivers</a></li>
+                <li><a href="payments">Payments</a></li>
+                <li><a href="reviews">Reviews</a></li>
+                <li><a href="routes">Routes</a></li>
+                <li><a href="trips">Trips</a></li>
+            </ul>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-container">
+        <h1>Reviews</h1>
+        <p>Here are the reviews for your services:</p>
+
+        <!-- Reviews Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Review ID</th>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                    <th>Review Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let adminreview of reviews">
+                    <td>{{ adminreview.reviewId }}</td>
+                    <td>{{ adminreview.rating }}</td>
+                    <td>{{ adminreview.comment }}</td>
+                    <td>{{ adminreview.reviewDate }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+

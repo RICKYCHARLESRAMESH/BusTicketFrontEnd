@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserLoginComponent } from '../user-login/user-login.component';
-import { UserRegisterComponent } from '../user-register/user-register.component';
-import { AdminLoginComponent } from '../admin-login/admin-login.component';
-import { DriverLoginComponent } from '../driver-login/driver-login.component';
+import { UserLoginComponent } from '../Login/user-login/user-login.component';
+import { UserRegisterComponent } from '../Login/user-register/user-register.component';
+import { AdminLoginComponent } from '../Login/admin-login/admin-login.component';
+import { DriverLoginComponent } from '../Login/driver-login/driver-login.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +36,8 @@ export class AuthenticationService {
       responseType:'json'
     })
   }
+
+  
  
  
 }

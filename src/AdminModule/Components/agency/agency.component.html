@@ -1,0 +1,53 @@
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            Admin Dashboard
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="agency">Agencies</a></li>
+                <li><a href="bus">Buses</a></li>
+                <li><a href="admin-customer">Customers</a></li>
+                <li><a href="drivers">Drivers</a></li>
+                <li><a href="payments">Payments</a></li>
+                <li><a href="reviews">Reviews</a></li>
+                <li><a href="routes">Routes</a></li>
+                <li><a href="trips">Trips</a></li>
+            </ul>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-container">
+        <h1>Manage Agencies</h1>
+        <button class="add-agency-btn">Add Agency</button>
+        <table class="agency-table">
+            <thead>
+                <tr>
+                    <th>Agency ID</th>
+                    <th>Name</th>
+                    <th>Contact Person Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let adminagency of agency">
+                    <td>{{ adminagency.agencyId }}</td>
+                    <td>{{ adminagency.name }}</td>
+                    <td>{{ adminagency.contactPersonName }}</td>
+                    <td>{{ adminagency.email }}</td>
+                    <td>{{ adminagency.phone }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function logout() {
+            location.href = '/';
+        }
+    </script>

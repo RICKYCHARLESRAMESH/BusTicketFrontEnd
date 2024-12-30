@@ -1,0 +1,46 @@
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            Admin Dashboard
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="agency">Agencies</a></li>
+                <li><a href="bus">Buses</a></li>
+                <li><a href="admin-customer">Customers</a></li>
+                <li><a href="drivers">Drivers</a></li>
+                <li><a href="payments">Payments</a></li>
+                <li><a href="reviews">Reviews</a></li>
+                <li><a href="routes">Routes</a></li>
+                <li><a href="trips">Trips</a></li>
+            </ul>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-container">
+        <h1>Manage Drivers</h1>
+        <button class="add-driver-btn">Add Driver</button>
+        <table class="driver-table">
+            <thead>
+                <tr>
+                    <th>Driver ID</th>
+                    <th>License Number</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function logout() {
+            location.href = '/';
+        }
+    </script>
+

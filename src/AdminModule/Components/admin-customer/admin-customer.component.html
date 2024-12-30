@@ -1,0 +1,49 @@
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            Admin Dashboard
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="agency">Agencies</a></li>
+                <li><a href="bus">Buses</a></li>
+                <li><a href="customers">Customers</a></li>
+                <li><a href="drivers">Drivers</a></li>
+                <li><a href="payments">Payments</a></li>
+                <li><a href="reviews">Reviews</a></li>
+                <li><a href="routes">Routes</a></li>
+                <li><a href="trips">Trips</a></li>
+            </ul>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-container">
+        <h1>Manage Customers</h1>
+        <table class="customer-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let admincustomer of customers">
+                    <td>{{ admincustomer.id }}</td>
+                    <td>{{ admincustomer.name }}</td>
+                    <td>{{ admincustomer.email }}</td>
+                    <td>{{ admincustomer.phone }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function logout() {
+            location.href = '/';
+        }
+    </script>
