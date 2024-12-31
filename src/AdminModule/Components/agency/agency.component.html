@@ -1,53 +1,172 @@
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        Admin Dashboard
+    </div>
+    <div class="nav-links">
+        <ul>
+            <li><a href="agency">Agencies</a></li>
+            <li><a href="bus">Buses</a></li>
+            <li><a href="admin-customer">Customers</a></li>
+            <li><a href="drivers">Drivers</a></li>
+            <li><a href="payments">Payments</a></li>
+            <li><a href="reviews">Reviews</a></li>
+            <li><a href="routes">Routes</a></li>
+            <li><a href="trips">Trips</a></li>
+        </ul>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+</div>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">
-            Admin Dashboard
-        </div>
-        <div class="nav-links">
-            <ul>
-                <li><a href="agency">Agencies</a></li>
-                <li><a href="bus">Buses</a></li>
-                <li><a href="admin-customer">Customers</a></li>
-                <li><a href="drivers">Drivers</a></li>
-                <li><a href="payments">Payments</a></li>
-                <li><a href="reviews">Reviews</a></li>
-                <li><a href="routes">Routes</a></li>
-                <li><a href="trips">Trips</a></li>
-            </ul>
-            <button class="logout-btn" (click)="logout()">Logout</button>
+<!-- Content Area -->
+<div class="content-container">
+    <h1>Manage Agencies</h1>
+    <button class="add-agency-btn" (click)="isCreate()">Add Agency</button>
+
+    <!-- Add Agency Form -->
+    <div *ngIf="isTrue">
+        <div>
+            <h2>Add New Agency</h2>
+            <form #agencyForm="ngForm" (ngSubmit)="saveNewAgency()">
+                <div>
+                    <label for="name">Name:</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        [(ngModel)]="newAgency.name" 
+                        required 
+                        #name="ngModel" />
+                    <div *ngIf="name.invalid && name.touched" class="error">
+                        Name is required.
+                    </div>
+                </div>
+
+                <div>
+                    <label for="contactPersonName">Contact Person Name:</label>
+                    <input 
+                        type="text" 
+                        id="contactPersonName" 
+                        name="contactPersonName" 
+                        [(ngModel)]="newAgency.contactPersonName" 
+                        required 
+                        #contactPersonName="ngModel" />
+                    <div *ngIf="contactPersonName.invalid && contactPersonName.touched" class="error">
+                        Contact Person Name is required.
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        [(ngModel)]="newAgency.email" 
+                        required 
+                        #email="ngModel" />
+                    <div *ngIf="email.invalid && email.touched" class="error">
+                        A valid email is required.
+                    </div>
+                </div>
+
+                <div>
+                    <label for="phone">Phone:</label>
+                    <input 
+                        type="text" 
+                        id="phone" 
+                        name="phone" 
+                        [(ngModel)]="newAgency.phone" 
+                        required 
+                        #phone="ngModel" />
+                    <div *ngIf="phone.invalid && phone.touched" class="error">
+                        Phone is required.
+                    </div>
+                </div>
+
+                <button type="submit" class="save-agency-btn" [disabled]="agencyForm.invalid">Save Agency</button>
+            </form>
         </div>
     </div>
 
-    <!-- Content Area -->
-    <div class="content-container">
-        <h1>Manage Agencies</h1>
-        <button class="add-agency-btn">Add Agency</button>
-        <table class="agency-table">
-            <thead>
-                <tr>
-                    <th>Agency ID</th>
-                    <th>Name</th>
-                    <th>Contact Person Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let adminagency of agency">
-                    <td>{{ adminagency.agencyId }}</td>
-                    <td>{{ adminagency.name }}</td>
-                    <td>{{ adminagency.contactPersonName }}</td>
-                    <td>{{ adminagency.email }}</td>
-                    <td>{{ adminagency.phone }}</td>
+    <!-- Agency Table -->
+    <table class="agency-table">
+        <thead>
+            <tr>
+                <th>Agency ID</th>
+                <th>Name</th>
+                <th>Contact Person Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let adminagency of agency">
+                <td>{{ adminagency.agencyId }}</td>
+                <td>{{ adminagency.name }}</td>
+                <td>{{ adminagency.contactPersonName }}</td>
+                <td>{{ adminagency.email }}</td>
+                <td>{{ adminagency.phone }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editAgency = adminagency; showEditAgencyForm = true">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-                </tr>
-            </tbody>
-        </table>
+    <!-- Edit Agency Form -->
+    <div *ngIf="showEditAgencyForm">
+        <h2>Edit Agency</h2>
+        <form (ngSubmit)="updateAgency(editAgency.agencyId, editAgency)" #editAgencyForm="ngForm">
+            <div>
+                <label for="name">Name:</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    [(ngModel)]="editAgency.name" 
+                    required />
+            </div>
+
+            <div>
+                <label for="contactPersonName">Contact Person Name:</label>
+                <input 
+                    type="text" 
+                    id="contactPersonName" 
+                    name="contactPersonName" 
+                    [(ngModel)]="editAgency.contactPersonName" 
+                    required />
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    [(ngModel)]="editAgency.email" 
+                    required />
+            </div>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input 
+                    type="text" 
+                    id="phone" 
+                    name="phone" 
+                    [(ngModel)]="editAgency.phone" 
+                    required />
+            </div>
+
+            <button type="submit" class="btn btn-success">Update Agency</button>
+            <button type="button" class="btn btn-secondary" (click)="showEditAgencyForm = false">Cancel</button>
+        </form>
     </div>
+</div>
 
-    <script>
-        function logout() {
-            location.href = '/';
-        }
-    </script>
+<script>
+    function logout() {
+        location.href = '/';
+    }
+</script>

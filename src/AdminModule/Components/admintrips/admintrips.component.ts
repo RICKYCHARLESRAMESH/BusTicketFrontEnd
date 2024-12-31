@@ -1,28 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Trip } from '../../../models/trips';
 import { Router } from '@angular/router';
-import { Agency } from '../../../models/agency';
 import { AdminService } from '../../Services/admin.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 @Component({
-  selector: 'app-agency',
-  imports: [CommonModule, FormsModule],
-  templateUrl: './agency.component.html',
-  styleUrls: ['./agency.component.css']
+  selector: 'app-admintrips',
+  imports: [CommonModule,FormsModule],
+  templateUrl: './admintrips.component.html',
+  styleUrl: './admintrips.component.css'
 })
-export class AgencyComponent implements OnInit {
-  agency: Agency[] = []; // Array of Agency objects
+export class AdmintripsComponent implements OnInit {
+  trip: Trip[] = []; // Array of Agency objects
   errorMessage: string | null = null;
   isTrue: boolean = false; // Toggle for creating a new agency
-  showEditAgencyForm: boolean = false; // Controls visibility of the edit form
-  newAgency: any = {}; // New agency data for the form
-  editAgency: any = {}; // Agency data for editing
+  showEditTripForm: boolean = false; // Controls visibility of the edit form
+  newTrip: any = {}; // New agency data for the form
+  editTrip: any = {}; // Agency data for editing
 
   constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getAllAgency();
+    this.getAllTrips();
   }
 
   logout(): void {
@@ -32,10 +31,10 @@ export class AgencyComponent implements OnInit {
     this.router.navigate(['']);  // Navigate to the home path
   }
 
-  getAllAgency(): void {
-    this.adminService.getAllAgency().subscribe(
-      (data: Agency[]) => {
-        this.agency = data;
+  getAllTrips(): void {
+    this.adminService.getAllTrips().subscribe(
+      (data: Trip[]) => {
+        this.trip = data;
         this.errorMessage = null;
       },
       (error) => {
@@ -49,29 +48,29 @@ export class AgencyComponent implements OnInit {
     this.isTrue = true;
   }
 
-  saveNewAgency(): void {
-    this.adminService.saveNewAgency(this.newAgency).subscribe({
+  saveNewTrip(): void {
+    this.adminService.saveNewTrip(this.newTrip).subscribe({
       next: (response) => {
         alert(response);
-        this.getAllAgency(); // Refresh agency list after adding
+        this.getAllTrips(); // Refresh agency list after adding
         this.isTrue = false; // Close the form
       }
     });
   }
 
   // Edit agency
-  editAgencyDetails(agency: any): void {
-    this.editAgency = { ...agency }; // Create a copy of the agency to edit
-    this.showEditAgencyForm = true; // Show the edit form
+  editTripDetails(trip: any): void {
+    this.editTrip = { ...trip }; // Create a copy of the agency to edit
+    this.showEditTripForm = true; // Show the edit form
   }
 
   // Update agency
-  updateAgency(agencyId: number,agency: Agency): void {
-    this.adminService.UpdateAgency(agency,agencyId).subscribe({
+  updateTrip(trip: Trip): void {
+    this.adminService.updateTrip(trip).subscribe({
       next: (response) => {
         alert('Agency updated successfully!');
-        this.getAllAgency(); // Refresh the agency list
-        this.showEditAgencyForm = false; // Hide the edit form
+        this.getAllTrips(); // Refresh the agency list
+        this.showEditTripForm = false; // Hide the edit form
       },
       error: (err) => {
         alert('Error updating agency!');
@@ -79,4 +78,7 @@ export class AgencyComponent implements OnInit {
       }
     });
   }
+}
+ {
+
 }

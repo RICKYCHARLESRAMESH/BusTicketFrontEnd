@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { Route } from '@angular/router';
-import { Routes } from '../../../models/route';
+import { RouteModel } from '../../../models/route';
 import { DriverService } from '../../Services/driver.service';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 
   export class RouteComponent implements OnInit {
-    routes: Routes [] = []; // Array of Customer objects
+    routes: RouteModel [] = []; // Array of Customer objects
     errorMessage: string | null = null;
   
     constructor(private driverService: DriverService) {}
@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
   
     getAllRoutes(): void {
       this.driverService.getAllRoutes().subscribe(
-        (data: Routes[]) => {
+        (data: RouteModel[]) => {
           this.routes = data;
           this.errorMessage = null;
         },

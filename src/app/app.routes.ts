@@ -19,7 +19,9 @@ import { BusComponent } from '../AdminModule/Components/bus/bus.component';
 import { DriversComponent } from '../AdminModule/Components/drivers/drivers.component';
 import { TripComponent } from '../DriverModule/Components/trip/trip.component';
 import { AdminCustomerComponent } from '../AdminModule/Components/admin-customer/admin-customer.component';
-
+import { AdmintripsComponent } from '../AdminModule/Components/admintrips/admintrips.component';
+import { AdminroutesComponent } from '../AdminModule/Components/adminroutes/adminroutes.component';
+import { ListOfBusesComponent } from '../UserModule/Components/list-of-buses/list-of-buses.component';
 export const routes: Routes = [
 
    { path: '', component:IndexComponent},
@@ -42,6 +44,11 @@ export const routes: Routes = [
    { path: 'admin-customer',component:AdminCustomerComponent},
    { path: 'agency',component:AgencyComponent},
    { path: 'bus',component:BusComponent},
-   { path: 'drivers',component:DriversComponent}
-     
+   { path: 'drivers',component:DriversComponent},
+   { path: 'adminroutes',component:AdminroutesComponent},
+   { path: 'admintrips',component:AdmintripsComponent},
+
+   
+
+   {path: 'list-of-buses',component:ListOfBusesComponent}
 ];

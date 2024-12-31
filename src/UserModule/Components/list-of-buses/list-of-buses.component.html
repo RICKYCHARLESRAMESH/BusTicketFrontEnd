@@ -1,0 +1,81 @@
+<div class="container">
+    <h1 class="text-center">List of Buses</h1>
+  
+    <!-- Search Form -->
+    <div class="search-form">
+      <form (ngSubmit)="searchTrips()">
+        <div class="form-group">
+          <label for="fromCity">From City</label>
+          <input
+            type="text"
+            id="fromCity"
+            [(ngModel)]="fromCity"
+            name="fromCity"
+            class="form-control"
+            placeholder="Enter departure city"
+            required
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="toCity">To City</label>
+          <input
+            type="text"
+            id="toCity"
+            [(ngModel)]="toCity"
+            name="toCity"
+            class="form-control"
+            placeholder="Enter destination city"
+            required
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="tripDate">Trip Date and Time</label>
+          <input
+            type="datetime-local"
+            id="tripDate"
+            [(ngModel)]="tripDate"
+            name="tripDate"
+            class="form-control"
+            required
+          />
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Search Trips</button>
+      </form>
+  
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+    </div>
+  
+    <!-- List of Trips -->
+    <div *ngIf="trips.length > 0" class="trip-list mt-5">
+      <h2 class="text-center">Available Trips</h2>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let trip of trips">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Route: {{ trip.route.fromCity }} → {{ trip.route.toCity }}</h5>
+              <p class="card-text">
+                <strong>Trip Date:</strong> {{ trip.tripDate }}<br />
+                <strong>Departure Time:</strong> {{ trip.departureTime }}<br />
+                <strong>Arrival Time:</strong> {{ trip.arrivalTime }}<br />
+                <strong>Available Seats:</strong> {{ trip.availableSeats }}<br />
+                <strong>Fare:</strong> ₹{{ trip.fare }}
+              </p>
+              <button class="btn btn-primary">Book</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- No Trips Found -->
+    <div *ngIf="trips.length === 0 && !errorMessage" class="alert alert-info mt-5">
+      No trips found. Please try a different search.
+    </div>
+  </div>
+  

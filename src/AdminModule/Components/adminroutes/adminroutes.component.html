@@ -1,0 +1,128 @@
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        Admin Dashboard
+    </div>
+    <div class="nav-links">
+        <ul>
+            <li><a href="agency">Agencies</a></li>
+            <li><a href="bus">Buses</a></li>
+            <li><a href="admin-customer">Customers</a></li>
+            <li><a href="drivers">Drivers</a></li>
+            <li><a href="payments">Payments</a></li>
+            <li><a href="reviews">Reviews</a></li>
+            <li><a href="routes">Routes</a></li>
+            <li><a href="trips">Trips</a></li>
+        </ul>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+</div>
+
+<!-- Content Area -->
+<div class="content-container">
+    <h1>Manage Routes</h1>
+    <button class="add-route-btn" (click)="isCreate()">Add Route</button>
+
+    <!-- Add Route Form -->
+    <div *ngIf="isTrue">
+        <div>
+            <h2>Add New Route</h2>
+            <form #routeForm="ngForm" (ngSubmit)="saveNewRoutes()">
+                <!-- From City -->
+                <div>
+                    <label for="fromCity">From City:</label>
+                    <input type="text" id="fromCity" name="fromCity" [(ngModel)]="newRoute.fromCity" required />
+                </div>
+
+                <!-- To City -->
+                <div>
+                    <label for="toCity">To City:</label>
+                    <input type="text" id="toCity" name="toCity" [(ngModel)]="newRoute.toCity" required />
+                </div>
+
+                <!-- Break Points -->
+                <div>
+                    <label for="breakPoints">Break Points:</label>
+                    <input type="text" id="breakPoints" name="breakPoints" [(ngModel)]="newRoute.breakPoints" required />
+                </div>
+
+                <!-- Duration -->
+                <div>
+                    <label for="duration">Duration:</label>
+                    <input type="text" id="duration" name="duration" [(ngModel)]="newRoute.duration" required />
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" [disabled]="routeForm.invalid">Save Route</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Routes Table -->
+    <table class="route-table">
+        <thead>
+            <tr>
+                <th>Route ID</th>
+                <th>From City</th>
+                <th>To City</th>
+                <th>Break Points</th>
+                <th>Duration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let route of route">
+                <td>{{ route.routeId }}</td>
+                <td>{{ route.fromCity }}</td>
+                <td>{{ route.toCity }}</td>
+                <td>{{ route.breakPoints }}</td>
+                <td>{{ route.duration }}</td>
+                <td>
+                    <button (click)="editRouteDetails(route)">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Edit Route Form -->
+    <div *ngIf="showEditRouteForm">
+        <div>
+            <h2>Edit Route</h2>
+            <form #editRouteForm="ngForm" (ngSubmit)="updateRoutes(editRoute)">
+                <!-- From City -->
+                <div>
+                    <label for="editFromCity">From City:</label>
+                    <input type="text" id="editFromCity" name="fromCity" [(ngModel)]="editRoute.fromCity" required />
+                </div>
+
+                <!-- To City -->
+                <div>
+                    <label for="editToCity">To City:</label>
+                    <input type="text" id="editToCity" name="toCity" [(ngModel)]="editRoute.toCity" required />
+                </div>
+
+                <!-- Break Points -->
+                <div>
+                    <label for="editBreakPoints">Break Points:</label>
+                    <input type="text" id="editBreakPoints" name="breakPoints" [(ngModel)]="editRoute.breakPoints" required />
+                </div>
+
+                <!-- Duration -->
+                <div>
+                    <label for="editDuration">Duration:</label>
+                    <input type="text" id="editDuration" name="duration" [(ngModel)]="editRoute.duration" required />
+                </div>
+
+                <!-- Update Button -->
+                <button type="submit" [disabled]="editRouteForm.invalid">Update Route</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function logout() {
+        location.href = '/';
+    }
+</script>

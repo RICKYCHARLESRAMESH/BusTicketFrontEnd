@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Review } from '../../../models/review';
+import { Review } from '../../../models/model';
 import { AdminService } from '../../Services/admin.service';
 import { CommonModule } from '@angular/common';
 

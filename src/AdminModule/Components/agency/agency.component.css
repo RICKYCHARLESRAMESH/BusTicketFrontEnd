@@ -1,5 +1,5 @@
-  /* General styles */
-  body {
+/* General styles */
+body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -7,7 +7,7 @@
 
 /* Navbar styles */
 .navbar {
-    background-color: #f33a1a; /* Redbus-inspired red */
+    background-color: #f33a1a;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -22,11 +22,6 @@
 .navbar .logo {
     font-size: 18px;
     font-weight: bold;
-}
-
-.navbar .nav-links {
-    display: flex;
-    align-items: center;
 }
 
 .navbar .nav-links ul {
@@ -44,11 +39,6 @@
     text-decoration: none;
     color: white;
     font-size: 16px;
-    transition: color 0.3s;
-}
-
-.navbar .nav-links ul li a:hover {
-    color: #ffe0e0;
 }
 
 .navbar .logout-btn {
@@ -58,17 +48,9 @@
     padding: 8px 15px;
     font-size: 14px;
     font-weight: bold;
-    cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar .logout-btn:hover {
-    background: #ffe0e0;
-    color: #f33a1a;
-}
-
-/* Page content styles */
 .content-container {
     margin: 20px;
     padding: 20px;
@@ -78,45 +60,29 @@
 }
 
 .content-container h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
     color: #f33a1a;
 }
 
-.add-agency-btn {
-    background: #f33a1a;
+.add-agency-button {
+    padding: 5px 15px; /* Reduced padding */
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px; /* Smaller font size */
     cursor: pointer;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-}
-
-.add-agency-btn:hover {
-    background: #ff5740;
-}
+    border-radius: 5px;
+  }
+  
+  .add-agency-button:hover {
+    background-color: #45a049;
+  }
 
 .agency-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.agency-table th, .agency-table td {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding: 8px;
 }
 
 .agency-table th {
-    background-color: #f33a1a;
+    background: #f33a1a;
     color: white;
-}
-
-.agency-table tr:nth-child(even) {
-    background-color: #f9f9f9;
 }

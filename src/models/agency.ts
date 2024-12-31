@@ -1,5 +1,5 @@
 export interface Agency {
-    agencyId: number;
+    agencyId?: number;
     name: string;
     contactPersonName: string;
     email: string;
