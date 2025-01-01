@@ -11,12 +11,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './admintrips.component.css'
 })
 export class AdmintripsComponent implements OnInit {
-  trip: Trip[] = []; // Array of Agency objects
+  trip: Trip[] = []; // Array of Trip objects
   errorMessage: string | null = null;
-  isTrue: boolean = false; // Toggle for creating a new agency
+  isTrue: boolean = false; // Toggle for creating a new trip
   showEditTripForm: boolean = false; // Controls visibility of the edit form
-  newTrip: any = {}; // New agency data for the form
-  editTrip: any = {}; // Agency data for editing
+  newTrip: any = {}; // New trip data for the form
+  editTrip: any = {}; // Trip data for editing
+  routeId: any = ''; // Route ID for fetching route by ID
+  fromCity: string = ''; // From city for searching routes by from city
+  toCity: string = ''; // To city for searching routes by to city
+  route: any = {}; // To store route details
 
   constructor(private adminService: AdminService, private router: Router) {}
 
@@ -38,8 +42,8 @@ export class AdmintripsComponent implements OnInit {
         this.errorMessage = null;
       },
       (error) => {
-        console.error('Error fetching agencies', error);
-        this.errorMessage = 'Failed to retrieve agencies. Please try again later.';
+        console.error('Error fetching trips', error);
+        this.errorMessage = 'Failed to retrieve trips. Please try again later.';
       }
     );
   }
@@ -52,33 +56,84 @@ export class AdmintripsComponent implements OnInit {
     this.adminService.saveNewTrip(this.newTrip).subscribe({
       next: (response) => {
         alert(response);
-        this.getAllTrips(); // Refresh agency list after adding
+        this.getAllTrips(); // Refresh trip list after adding
         this.isTrue = false; // Close the form
       }
     });
   }
 
-  // Edit agency
+  // Edit trip
   editTripDetails(trip: any): void {
-    this.editTrip = { ...trip }; // Create a copy of the agency to edit
+    this.editTrip = { ...trip }; // Create a copy of the trip to edit
     this.showEditTripForm = true; // Show the edit form
   }
 
-  // Update agency
+  // Update trip
   updateTrip(trip: Trip): void {
     this.adminService.updateTrip(trip).subscribe({
       next: (response) => {
-        alert('Agency updated successfully!');
-        this.getAllTrips(); // Refresh the agency list
+        alert('Trip updated successfully!');
+        this.getAllTrips(); // Refresh the trip list
         this.showEditTripForm = false; // Hide the edit form
       },
       error: (err) => {
-        alert('Error updating agency!');
+        alert('Error updating trip!');
         console.error(err);
       }
     });
   }
-}
- {
 
+  // Fetch route by ID
+  getRouteById(): void {
+    if (this.routeId) {
+      this.adminService.getRouteById(this.routeId).subscribe({
+        next: (response) => {
+          this.route = response;
+          console.log('Route details:', this.route);
+        },
+        error: (err) => {
+          console.error('Error fetching route by ID:', err);
+          alert('Error fetching route details.');
+        }
+      });
+    } else {
+      alert('Please enter a valid Route ID.');
+    }
+  }
+
+  // Fetch routes by from city
+  getRoutesByFromCity(): void {
+    if (this.fromCity) {
+      this.adminService.getRoutesByFromCity(this.fromCity).subscribe({
+        next: (response) => {
+          this.route = response;
+          console.log('Routes from city:', this.route);
+        },
+        error: (err) => {
+          console.error('Error fetching routes by from city:', err);
+          alert('Error fetching routes.');
+        }
+      });
+    } else {
+      alert('Please enter a valid From City.');
+    }
+  }
+
+  // Fetch routes by to city
+  getRoutesByToCity(): void {
+    if (this.toCity) {
+      this.adminService.getRoutesByToCity(this.toCity).subscribe({
+        next: (response) => {
+          this.route = response;
+          console.log('Routes to city:', this.route);
+        },
+        error: (err) => {
+          console.error('Error fetching routes by to city:', err);
+          alert('Error fetching routes.');
+        }
+      });
+    } else {
+      alert('Please enter a valid To City.');
+    }
+  }
 }

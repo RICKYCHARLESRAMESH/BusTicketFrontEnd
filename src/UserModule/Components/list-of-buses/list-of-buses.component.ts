@@ -23,22 +23,22 @@ export class ListOfBusesComponent implements OnInit {
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    this.getAllTrips();
+    this.searchTrips();
   }
 
   // Method to load all trips on initialization
-  getAllTrips(): void {
-    this.adminService.getAllTrips().subscribe(
-      (data: Trip[]) => {
-        this.trips = data;
-        //this.errorMessage = null;
-      },
-      (error) => {
-        console.error('Error fetching agencies', error);
-        this.errorMessage = 'Failed to retrieve agencies. Please try again later.';
-      }
-    );
-  }
+  // getAllTrips(): void {
+  //   this.adminService.getAllTrips().subscribe(
+  //     (data: Trip[]) => {
+  //       this.trips = data;
+  //       //this.errorMessage = null;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching agencies', error);
+  //       this.errorMessage = 'Failed to retrieve agencies. Please try again later.';
+  //     }
+  //   );
+  // }
 
   // Method to search trips based on fromCity, toCity, and tripDate
   searchTrips(): void {

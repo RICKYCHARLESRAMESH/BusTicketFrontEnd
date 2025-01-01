@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DriverService } from '../../Services/driver.service';
 import { Customer } from '../../../models/customer';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -14,7 +15,7 @@ export class CustomerComponent implements OnInit {
   customers: Customer[] = []; // Array of Customer objects
   errorMessage: string | null = null;
 
-  constructor(private driverService: DriverService) {}
+  constructor(private driverService: DriverService,private router: Router) {}
 
   ngOnInit(): void {
     this.getAllCustomers();
@@ -32,5 +33,16 @@ export class CustomerComponent implements OnInit {
       }
     );
   }
+
+  logout() {
+    // Perform any necessary cleanup or logout actions
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    console.log('Logged out successfully!');
+    
+    // Redirect to the index (home) component
+    this.router.navigate(['']);  // Navigate to the home path
+  }
+
 }
 

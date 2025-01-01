@@ -80,6 +80,20 @@ export class AdminService {
     });
   }
 
+  getAgencyById(agencyId:number): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`agencies/${agencyId}`,{
+      responseType: 'json'
+    });
+  }
+
+  getAgencyByName(name:string): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`agencies/name/${name}`,{
+      responseType: 'text'
+    });
+  }
+
 //DRIVER  
   saveNewDrivers(driver:Driver): Observable<any> {
  
@@ -94,6 +108,22 @@ export class AdminService {
     });
   }
 
+  getDriverById(driverId:number):Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`drivers/${driverId}`,{
+      responseType: 'text'
+    });
+  }
+
+  getDriverByName(name:string):Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`drivers/name/${name}`,{
+      responseType: 'text'
+    });
+  }
+
+
+
   // ROUTES
 
   saveNewRoutes(route:RouteModel): Observable<any> {
@@ -105,6 +135,27 @@ export class AdminService {
   updateRoutes(route:RouteModel): Observable<any> {
  
     return this.httpClient.put(this.baseUrl+`routes`,route, {
+      responseType: 'text'
+    });
+  }
+
+  getRouteById(routeId:RouteModel): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`routes/${routeId}`, {
+      responseType: 'text'
+    });
+  }
+
+  getRoutesByFromCity(fromCity:string): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`routes/from_city/${fromCity}`, {
+      responseType: 'text'
+    });
+  }
+
+  getRoutesByToCity(toCity:string): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`routes/to_city/${toCity}`, {
       responseType: 'text'
     });
   }
@@ -124,6 +175,26 @@ export class AdminService {
       responseType: 'text'
     });
   }
+
+  getBusById(busId: Number): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`buses/${busId}`, {
+      responseType: 'text'
+    });
+  }
+
+
+  getBusesByOfficeId(officeId:Number): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`buses/${officeId}`, {
+      responseType: 'text'
+    });
+  }
+
+  
+
+
+
 
 
   // TRIPS

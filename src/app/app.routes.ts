@@ -17,7 +17,6 @@ import { ReviewsComponent } from '../AdminModule/Components/reviews/reviews.comp
 import { AgencyComponent } from '../AdminModule/Components/agency/agency.component';
 import { BusComponent } from '../AdminModule/Components/bus/bus.component';
 import { DriversComponent } from '../AdminModule/Components/drivers/drivers.component';
-import { TripComponent } from '../DriverModule/Components/trip/trip.component';
 import { AdminCustomerComponent } from '../AdminModule/Components/admin-customer/admin-customer.component';
 import { AdmintripsComponent } from '../AdminModule/Components/admintrips/admintrips.component';
 import { AdminroutesComponent } from '../AdminModule/Components/adminroutes/adminroutes.component';
@@ -32,7 +31,6 @@ export const routes: Routes = [
    { path: 'user-register',component:UserRegisterComponent},
 
    { path: 'customer-dashboard', component:CustomerDashboardComponent},
-   { path: 'trip',component:TripComponent},
    { path: 'admin-dashboard',  component: AdminDashboardComponent},
    { path: 'driver-dash-board', component:DriverDashBoardComponent},
    { path: 'customer',  component:CustomerComponent},

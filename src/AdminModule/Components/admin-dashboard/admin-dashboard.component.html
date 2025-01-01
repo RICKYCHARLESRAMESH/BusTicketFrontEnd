@@ -1,33 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">
-            Admin Dashboard
-        </div>
-        <div class="nav-links">
-            <ul>
-                <li><a href="agency">Agencies</a></li>
-                <li><a href="bus">Buses</a></li>
-                <li><a href="admin-customer">Customers</a></li>
-                <li><a href="drivers">Drivers</a></li>
-                <li><a href="payments">Payment</a></li>
-                <li><a href="reviews">Reviews</a></li>
-                <li><a href="routes">Routes</a></li>
-                <li><a href="admintrips">Trips</a></li>
-            </ul>
-            <button class="logout-btn" (click)="logout()">Logout</button>
-        </div>
+ <!-- Navbar -->
+ 
+ <div class="navbar">
+    <div class="logo">
+        Admin Dashboard
     </div>
-
-    <!-- Content Area -->
-    <div class="content-container">
-        <h1>Welcome to the Admin Dashboard</h1>
-        <p>Select an option from the navigation bar to manage the system.</p>
+    <div class="nav-links">
+            <a href="agency" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Agencies</a>
+            <a href="bus" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;" >Buses</a>
+            <a href="admin-customer" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Customers</a>
+            <a href="drivers" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Drivers</a>
+            <a href="payments" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Payment</a>
+            <a href="reviews" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Reviews</a>
+            <a href="routes" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Routes</a>
+            <a href="#trips" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Trips</a>
+        <button class="logout-btn" (click)="logout()">Logout</button>
     </div>
+</div>
 
+<!-- Content Area -->
+ <div class="content-container">
+    <div class="image-container">
+        <img src="../../../../src/assets/d6.jpg" alt="Admin Image">
+    </div>
+    <div class="text-container" style="text-align: justify">
+        <h1 style="text-align: center;">Welcome to the Admin Dashboard</h1>
+        <h6 style="text-align: center;"><i>Ride Smart, Travel Far! </i></h6><br>
+        <p>Manage your bus ticket booking operations efficiently and effectively. <br>
+            Here you can oversee all aspects of the system, from routes and buses to bookings and customer interactions.<br>
+            Thank you for being an integral part of our bus ticket booking service! <br>Your efforts help us provide seamless travel experiences to our customers.
+             </p>
+    </div>
+</div>
     <script>
         // Logout method using Angular's Router
         function logout() {
@@ -36,5 +39,4 @@
           location.href = '/'; // Adjust the path to match your Angular route
         }
       </script>
-</body>
-</html>
+

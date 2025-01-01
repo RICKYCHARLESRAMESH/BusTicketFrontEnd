@@ -19,7 +19,30 @@
 <!-- Content Area -->
 <div class="content-container">
     <h1>Manage Drivers</h1>
+
+    <!-- Add Driver Button -->
     <button class="add-driver-btn" (click)="isCreate()">Add Driver</button>
+
+    <!-- Search by ID or Name Dropdown -->
+    <div class="search-container">
+        <select [(ngModel)]="searchType">
+            <option value="id">Search by ID</option>
+            <option value="name">Search by Name</option>
+        </select>
+        <input
+            *ngIf="searchType === 'id'"
+            type="number"
+            placeholder="Enter Driver ID"
+            [(ngModel)]="searchDriverId"
+        />
+        <input
+            *ngIf="searchType === 'name'"
+            type="text"
+            placeholder="Enter Driver Name"
+            [(ngModel)]="searchDriverName"
+        />
+        <button class="search-btn" (click)="searchDriver()">Search</button>
+    </div>
 
     <!-- Add Driver Form -->
     <div *ngIf="isTrue">
@@ -34,12 +57,12 @@
                         name="name"
                         [(ngModel)]="newDriver.name"
                         required
-                        #name="ngModel" />
+                        #name="ngModel"
+                    />
                     <div *ngIf="name.invalid && name.touched" class="error">
                         Name is required.
                     </div>
                 </div>
-
                 <div>
                     <label for="licenseNumber">License Number:</label>
                     <input
@@ -48,12 +71,12 @@
                         name="licenseNumber"
                         [(ngModel)]="newDriver.licenseNumber"
                         required
-                        #licenseNumber="ngModel" />
+                        #licenseNumber="ngModel"
+                    />
                     <div *ngIf="licenseNumber.invalid && licenseNumber.touched" class="error">
                         License Number is required.
                     </div>
                 </div>
-
                 <div>
                     <label for="phone">Phone:</label>
                     <input
@@ -62,12 +85,12 @@
                         name="phone"
                         [(ngModel)]="newDriver.phone"
                         required
-                        #phone="ngModel" />
+                        #phone="ngModel"
+                    />
                     <div *ngIf="phone.invalid && phone.touched" class="error">
                         Phone is required.
                     </div>
                 </div>
-
                 <button type="submit" class="save-driver-btn" [disabled]="driverForm.invalid">Save Driver</button>
             </form>
         </div>
@@ -108,9 +131,9 @@
                     id="name"
                     name="name"
                     [(ngModel)]="editDriver.name"
-                    required />
+                    required
+                />
             </div>
-
             <div>
                 <label for="licenseNumber">License Number:</label>
                 <input
@@ -118,9 +141,9 @@
                     id="licenseNumber"
                     name="licenseNumber"
                     [(ngModel)]="editDriver.licenseNumber"
-                    required />
+                    required
+                />
             </div>
-
             <div>
                 <label for="phone">Phone:</label>
                 <input
@@ -128,17 +151,11 @@
                     id="phone"
                     name="phone"
                     [(ngModel)]="editDriver.phone"
-                    required />
+                    required
+                />
             </div>
-
             <button type="submit" class="btn btn-success">Update Driver</button>
             <button type="button" class="btn btn-secondary" (click)="showEditDriverForm = false">Cancel</button>
         </form>
     </div>
 </div>
-
-<script>
-    function logout() {
-        location.href = '/';
-    }
-</script>

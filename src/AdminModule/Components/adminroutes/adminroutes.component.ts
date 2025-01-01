@@ -12,13 +12,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './adminroutes.component.html',
   styleUrl: './adminroutes.component.css'
 })
-export class AdminroutesComponent  implements OnInit {
-  route: RouteModel[] = []; // Array of Routes objects
+export class AdminroutesComponent implements OnInit {
+  route: RouteModel[] = []; // Array of Route objects
   errorMessage: string | null = null;
-  isTrue: boolean = false; // Toggle for creating a new route
-  showEditRouteForm: boolean = false; // Controls visibility of the edit form
-  newRoute: any = {}; // New route data for the form
-  editRoute: any = {}; // Route data for editing
+  isTrue: boolean = false;
+  showEditRouteForm: boolean = false;
+  newRoute: any = {};
+  editRoute: any = {};
+
+  routeId: any = ''; // Route ID for searching by ID
+  fromCity: string = ''; // From City for searching by From City
+  toCity: string = ''; // To City for searching by To City
+  searchedRoutes: RouteModel[] = []; // Store search result
 
   constructor(private adminService: AdminService, private router: Router) {}
 
@@ -29,8 +34,7 @@ export class AdminroutesComponent  implements OnInit {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-    console.log('Logged out successfully!');
-    this.router.navigate(['']); // Navigate to the home path
+    this.router.navigate(['']);
   }
 
   getAllRoutes(): void {
@@ -52,10 +56,10 @@ export class AdminroutesComponent  implements OnInit {
 
   saveNewRoutes(): void {
     this.adminService.saveNewRoutes(this.newRoute).subscribe({
-      next: (response) => {
+      next: () => {
         alert('Route added successfully!');
-        this.getAllRoutes(); // Refresh the routes list after adding
-        this.isTrue = false; // Close the form
+        this.getAllRoutes(); 
+        this.isTrue = false;
       },
       error: (err) => {
         alert('Error adding route!');
@@ -64,24 +68,59 @@ export class AdminroutesComponent  implements OnInit {
     });
   }
 
-  // Edit route
   editRouteDetails(route: RouteModel): void {
-    this.editRoute = { ...route }; // Create a copy of the route to edit
-    this.showEditRouteForm = true; // Show the edit form
+    this.editRoute = { ...route };
+    this.showEditRouteForm = true;
   }
 
-  // Update route
   updateRoutes(route: RouteModel): void {
     this.adminService.updateRoutes(route).subscribe({
-      next: (response) => {
+      next: () => {
         alert('Route updated successfully!');
-        this.getAllRoutes(); // Refresh the routes list
-        this.showEditRouteForm = false; // Hide the edit form
+        this.getAllRoutes(); 
+        this.showEditRouteForm = false;
       },
       error: (err) => {
         alert('Error updating route!');
         console.error(err);
       }
     });
+  }
+
+  // Search routes by Route ID, From City, or To City
+  searchRoutes(): void {
+    if (this.routeId) {
+      this.adminService.getRouteById(this.routeId).subscribe({
+        next: (response) => {
+          this.route = [response];
+        },
+        error: (err) => {
+          console.error('Error fetching route by ID:', err);
+          alert('Error fetching route details.');
+        }
+      });
+    } else if (this.fromCity) {
+      this.adminService.getRoutesByFromCity(this.fromCity).subscribe({
+        next: (response) => {
+          this.route = response;
+        },
+        error: (err) => {
+          console.error('Error fetching routes by From City:', err);
+          alert('Error fetching routes.');
+        }
+      });
+    } else if (this.toCity) {
+      this.adminService.getRoutesByToCity(this.toCity).subscribe({
+        next: (response) => {
+          this.route = response;
+        },
+        error: (err) => {
+          console.error('Error fetching routes by To City:', err);
+          alert('Error fetching routes.');
+        }
+      });
+    } else {
+      alert('Please enter a valid search criteria.');
+    }
   }
 }

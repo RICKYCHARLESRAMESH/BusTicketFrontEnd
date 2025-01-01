@@ -13,12 +13,12 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getAllTrips(): Observable<any> {
+  // getAllTrips(): Observable<any> {
  
-    return this.httpClient.get(this.baseUrl+"trips/get", {
-      responseType: 'json'
-    });
-  }
+  //   return this.httpClient.get(this.baseUrl+"trips/get", {
+  //     responseType: 'json'
+  //   });
+  // }
 
   // Fetch trips based on from city, to city, and trip date
   getTrips(from_city: string, to_city: string, trip_date: string): Observable<any> {

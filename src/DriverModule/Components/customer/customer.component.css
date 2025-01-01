@@ -1,20 +1,22 @@
-  /* General Styles */
-  body {
+/* General styles */
+body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    color: #333;
 }
 
-/* Navbar Styles */
+/* Navbar styles */
 .navbar {
-    background-color: #f33a1a; /* Redbus-inspired color */
+    background-color: #f33a1a; /* Redbus-inspired red */
     color: white;
-    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar .logo {
@@ -22,9 +24,36 @@
     font-weight: bold;
 }
 
+.navbar .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-right ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-right ul li {
+    margin: 0 15px;
+}
+
+.navbar .nav-right ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbar .nav-right ul li a:hover {
+    color: #ffe0e0;
+}
+
 .navbar .logout-btn {
     background: white;
-    color:  #f33a1a;
+    color: #f33a1a;
     border: none;
     padding: 8px 15px;
     font-size: 14px;
@@ -34,63 +63,64 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Align the buttons */
 .navbar .logout-btn:hover {
     background: #ffe0e0;
-    color:  #f33a1a;
+    color: #f33a1a;
 }
 
-/* Table Container Styles */
+/* Table Container */
 .table-container {
-    margin: 20px auto;
+    margin: 20px;
     padding: 20px;
-    width: 90%;
-    max-width: 800px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .table-container h1 {
-    font-size: 24px;
-    color:  #f33a1a;
+    font-size: 28px;
     margin-bottom: 20px;
+    color: #f33a1a;
 }
 
-table {
+.table-container table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
-table thead {
-    background-color:  #f33a1a;
+.table-container th, .table-container td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.table-container th {
+    background-color: #f33a1a;
     color: white;
 }
 
-table th, table td {
-    text-align: left;
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-table tbody tr:nth-child(even) {
+.table-container tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-table tbody tr:hover {
-    background-color: #ffe0e0;
-}
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar .nav-right ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-.action-btn {
-    background-color:  #f33a1a;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+    .navbar .nav-right ul li {
+        margin: 10px 0;
+    }
 
-.action-btn:hover {
-    background-color:  #f33a1a;
+    .navbar .nav-right {
+        flex-direction: column;
+    }
+
+    .navbar .logo {
+        flex-grow: 1;
+    }
 }

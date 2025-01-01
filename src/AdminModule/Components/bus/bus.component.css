@@ -1,13 +1,12 @@
-   /* General styles */
+   General styles
    body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
-/* Navbar styles */
 .navbar {
-    background-color: #f33a1a; /* Redbus-inspired red */
+    background-color: #f33a1a; 
     color: white;
     display: flex;
     justify-content: space-between;
@@ -68,7 +67,6 @@
     color: #f33a1a;
 }
 
-/* Page content styles */
 .content-container {
     margin: 20px;
     padding: 20px;
