@@ -1,12 +1,13 @@
-   General styles
+   /* General styles */
    body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
+/* Navbar styles */
 .navbar {
-    background-color: #f33a1a; 
+    background-color: #f33a1a; /* Redbus-inspired red */
     color: white;
     display: flex;
     justify-content: space-between;
@@ -67,6 +68,7 @@
     color: #f33a1a;
 }
 
+/* Page content styles */
 .content-container {
     margin: 20px;
     padding: 20px;
@@ -81,7 +83,7 @@
     color: #f33a1a;
 }
 
-.add-bus-btn {
+.add-driver-btn {
     background: #f33a1a;
     color: white;
     border: none;
@@ -94,27 +96,27 @@
     transition: background-color 0.3s;
 }
 
-.add-bus-btn:hover {
+.add-driver-btn:hover {
     background: #ff5740;
 }
 
-.bus-table {
+.driver-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.bus-table th, .bus-table td {
+.driver-table th, .driver-table td {
     border: 1px solid #ddd;
     text-align: left;
     padding: 8px;
 }
 
-.bus-table th {
+.driver-table th {
     background-color: #f33a1a;
     color: white;
 }
 
-.bus-table tr:nth-child(even) {
+.driver-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }

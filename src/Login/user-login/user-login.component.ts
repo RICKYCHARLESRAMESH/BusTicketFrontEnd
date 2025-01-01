@@ -25,7 +25,7 @@ export class UserLoginComponent {
     // alert(JSON.stringify(e));
     localStorage.setItem('token',this.token);
     localStorage.setItem('role',this.user.role)
-    this.router.navigate(["/customer-dashboard"])
+    this.router.navigate(["/list-of-buses"])
     },
     (error) => {
       console.error('Error saving user:', error);
