@@ -1,10 +1,14 @@
-/* General styles */
+.background{
+    background-image: url('/assets/d8.jpg');
+    background-size: cover;
+    height: 368vh;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
-
+ 
 /* Navbar styles */
 .navbar {
     background-color: #f33a1a;
@@ -18,29 +22,29 @@ body {
     top: 0;
     z-index: 1000;
 }
-
+ 
 .navbar .logo {
     font-size: 18px;
     font-weight: bold;
 }
-
+ 
 .navbar .nav-links ul {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
-
+ 
 .navbar .nav-links ul li {
     margin: 0 15px;
 }
-
+ 
 .navbar .nav-links ul li a {
     text-decoration: none;
     color: white;
     font-size: 16px;
 }
-
+ 
 .navbar .logout-btn {
     background: white;
     color: #f33a1a;
@@ -50,19 +54,21 @@ body {
     font-weight: bold;
     border-radius: 4px;
 }
-
+ 
+ 
+ 
 .content-container {
     margin: 20px;
     padding: 20px;
-    background: white;
+    background: rgba(245, 243,243,0.6);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+ 
 .content-container h1 {
     color: #f33a1a;
 }
-
+ 
 .add-agency-button {
     padding: 5px 15px; /* Reduced padding */
     background-color: #4CAF50;
@@ -72,17 +78,28 @@ body {
     cursor: pointer;
     border-radius: 5px;
   }
-  
+ 
   .add-agency-button:hover {
     background-color: #45a049;
   }
-
+ 
 .agency-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top:20px;
 }
-
+.agency-table th, .agency-table td{
+    border:1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+ 
 .agency-table th {
-    background: #f33a1a;
+    background-color: #f33a1a;
     color: white;
 }
+ 
+.agency-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+ 

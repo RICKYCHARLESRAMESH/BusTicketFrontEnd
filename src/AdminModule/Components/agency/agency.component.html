@@ -1,21 +1,21 @@
 <!-- Navbar -->
+<div class="background">
+
 <div class="navbar">
     <div class="logo">
         Admin Dashboard
     </div>
     <div class="nav-links">
-        <ul>
-            <li><a href="agency">Agencies</a></li>
-            <li><a href="bus">Buses</a></li>
-            <li><a href="admin-customer">Customers</a></li>
-            <li><a href="drivers">Drivers</a></li>
-            <li><a href="payments">Payments</a></li>
-            <li><a href="reviews">Reviews</a></li>
-            <li><a href="routes">Routes</a></li>
-            <li><a href="trips">Trips</a></li>
-        </ul>
-        <button class="logout-btn" (click)="logout()">Logout</button>
-    </div>
+        <a href="agency" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Agencies</a>
+        <a href="bus" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;" >Buses</a>
+        <a href="admin-customer" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Customers</a>
+        <a href="drivers" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Drivers</a>
+        <a href="payments" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Payment</a>
+        <a href="reviews" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Reviews</a>
+        <a href="routes" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Routes</a>
+        <a href="#trips" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Trips</a>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+</div>
 </div>
 
 <!-- Content Area -->
@@ -28,10 +28,12 @@
         <select id="searchType" [(ngModel)]="searchType">
             <option value="id">ID</option>
             <option value="name">Name</option>
+            <option value="contactPerson">Contact Person Name</option>
         </select>
 
         <input *ngIf="searchType === 'name'" type="text" placeholder="Enter Agency Name" [(ngModel)]="searchAgencyName"/>
         <input *ngIf="searchType === 'id'" type="number" placeholder="Enter Agency ID" [(ngModel)]="searchAgencyId"/>
+        <input *ngIf="searchType === 'contactPerson'" type="text" placeholder="Enter Contact Person Name" [(ngModel)]="searchContactPersonName"/>
 
         <button class="search-btn" (click)="searchAgency()">Search</button>
 
@@ -41,10 +43,66 @@
         <div *ngIf="searchAgencyId && searchAgencyId <= 0" class="error">
             Please enter a valid Agency ID.
         </div>
+        <div *ngIf="searchContactPersonName && searchContactPersonName.length === 0" class="error">
+            Please enter a valid Contact Person Name.
+        </div>
     </div>
 
-    <!-- Add Agency Form -->
+    <!-- Add Agency Button -->
     <button class="add-agency-btn" (click)="isCreate()">Add Agency</button>
+
+    <!-- Add Agency Form (Visible when isTrue is true) -->
+    <div *ngIf="isTrue">
+        <h2>Add New Agency</h2>
+        <form (ngSubmit)="saveNewAgency()">
+            <div>
+                <label for="name">Name:</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    [(ngModel)]="newAgency.name" 
+                    required 
+                />
+            </div>
+
+            <div>
+                <label for="contactPersonName">Contact Person Name:</label>
+                <input 
+                    type="text" 
+                    id="contactPersonName" 
+                    name="contactPersonName" 
+                    [(ngModel)]="newAgency.contactPersonName" 
+                    required 
+                />
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    [(ngModel)]="newAgency.email" 
+                    required 
+                />
+            </div>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input 
+                    type="text" 
+                    id="phone" 
+                    name="phone" 
+                    [(ngModel)]="newAgency.phone" 
+                    required 
+                />
+            </div>
+
+            <button type="submit" class="btn btn-success">Create Agency</button>
+            <button type="button" class="btn btn-secondary" (click)="isTrue = false">Cancel</button>
+        </form>
+    </div>
 
     <!-- Agency Table -->
     <table class="agency-table">
@@ -124,4 +182,5 @@
             <button type="button" class="btn btn-secondary" (click)="showEditAgencyForm = false">Cancel</button>
         </form>
     </div>
+</div>
 </div>

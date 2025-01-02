@@ -1,10 +1,10 @@
-   /* General styles */
-   body {
+ /* General styles */
+ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
-
+ 
 /* Navbar styles */
 .navbar {
     background-color: #f33a1a; /* Redbus-inspired red */
@@ -18,39 +18,39 @@
     top: 0;
     z-index: 1000;
 }
-
+ 
 .navbar .logo {
     font-size: 18px;
     font-weight: bold;
 }
-
+ 
 .navbar .nav-links {
     display: flex;
     align-items: center;
 }
-
+ 
 .navbar .nav-links ul {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
-
+ 
 .navbar .nav-links ul li {
     margin: 0 15px;
 }
-
+ 
 .navbar .nav-links ul li a {
     text-decoration: none;
     color: white;
     font-size: 16px;
     transition: color 0.3s;
 }
-
+ 
 .navbar .nav-links ul li a:hover {
     color: #ffe0e0;
 }
-
+ 
 .navbar .logout-btn {
     background: white;
     color: #f33a1a;
@@ -62,28 +62,33 @@
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
 }
-
+ 
 .navbar .logout-btn:hover {
     background: #ffe0e0;
     color: #f33a1a;
 }
-
+ 
 /* Page content styles */
+.background{
+    background-image: url('/assets/d8.jpg');
+    background-size: cover;
+    height: 368vh;
+}
 .content-container {
     margin: 20px;
     padding: 20px;
-    background: white;
+    background: rgba(245, 243, 243, 0.6);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+ 
 .content-container h1 {
     font-size: 28px;
     margin-bottom: 20px;
     color: #f33a1a;
 }
-
-.add-driver-btn {
+ 
+.add-bus-btn {
     background: #f33a1a;
     color: white;
     border: none;
@@ -95,28 +100,64 @@
     margin-bottom: 20px;
     transition: background-color 0.3s;
 }
-
-.add-driver-btn:hover {
+ 
+.add-bus-btn:hover {
     background: #ff5740;
 }
-
-.driver-table {
+ 
+.bus-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
-
-.driver-table th, .driver-table td {
+ 
+.bus-table th, .bus-table td {
     border: 1px solid #ddd;
     text-align: left;
     padding: 8px;
 }
-
-.driver-table th {
+ 
+.bus-table th {
     background-color: #f33a1a;
     color: white;
 }
-
-.driver-table tr:nth-child(even) {
+ 
+.bus-table tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+.btn {
+    margin-right: 10px; /* Adjust the value as needed */
+}
+ 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between each form-group (component) */
+    margin-top: 20px; /* Add space at the top of the form */
+}
+ 
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ 
+.form-group label {
+    width: 200px; /* Set consistent width for labels */
+    text-align: right; /* Align text to the right */
+    margin-right: 15px; /* Add space between the label and input */
+}
+ 
+.form-group input {
+    flex: 1; /* Make input take up remaining space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+ 
+/* Add spacing for the error messages */
+.error {
+    margin-top: 5px; /* Space between input and error message */
+    color: red;
+    font-size: 12px;
 }

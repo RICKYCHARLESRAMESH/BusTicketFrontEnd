@@ -4,7 +4,8 @@ import { UserService } from '../../Services/user.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouteModel } from '../../../models/route';
-import { AdminService } from '../../../AdminModule/Services/admin.service';
+import { Router } from '@angular/router';
+declare var Razorpay:any;
 
 @Component({
   selector: 'app-list-of-buses',
@@ -19,26 +20,22 @@ export class ListOfBusesComponent implements OnInit {
   trips: Trip[] = [];
   route: RouteModel[] = [];
   errorMessage: string = '';
+  trip:any;
+  fare: any;
 
-  constructor(private adminService: AdminService) {}
+  constructor(private userService: UserService,private router: Router) {}
 
   ngOnInit(): void {
     this.searchTrips();
   }
 
-  // Method to load all trips on initialization
-  // getAllTrips(): void {
-  //   this.adminService.getAllTrips().subscribe(
-  //     (data: Trip[]) => {
-  //       this.trips = data;
-  //       //this.errorMessage = null;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching agencies', error);
-  //       this.errorMessage = 'Failed to retrieve agencies. Please try again later.';
-  //     }
-  //   );
-  // }
+  selectedTrip: any = null;
+
+
+navigateToBookingPage(trip: any) {
+  this.selectedTrip = trip;
+}
+ 
 
   // Method to search trips based on fromCity, toCity, and tripDate
   searchTrips(): void {
@@ -47,7 +44,7 @@ export class ListOfBusesComponent implements OnInit {
       return;
     }
     console.log(this.fromCity);
-    this.adminService.getTrips(this.fromCity, this.toCity, this.tripDate).subscribe({
+    this.userService.getTrips(this.fromCity, this.toCity, this.tripDate).subscribe({
 
       next: (data: Trip[]) => {
         this.trips = data;
@@ -59,4 +56,49 @@ export class ListOfBusesComponent implements OnInit {
       // }
     });
   }
+
+
+
+
+  payNow() {
+    const RazorpayOptions = {
+      key: 'rzp_test_zWhcqYLonnFntk',
+      amount: this.fare * 100,
+      currency: 'INR',
+      name: 'Bus Ticket',
+      description: 'Sample Razorpay demo',
+      image: 'https://i.imgur.com/FApqk3D.jpeg',
+          prefill: {
+            name: 'Bus Ticket',
+            email: 'user@gmail.com',
+            contact: '9898989898'
+          },
+          theme: {
+            color: '#6466e3'
+          },
+          handler: (response: any) => {
+           
+            console.log('Payment successful. Payment ID:', response.razorpay_payment_id);
+     
+            // Navigate to home after successful payment
+            this.router.navigate(['/user-review']);
+          },
+          modal: {
+            ondismiss: () => {
+              console.log('Payment modal dismissed');
+            }
+          }
+        };
+     
+        try {
+          const rzp = new Razorpay(RazorpayOptions);
+          rzp.open();
+     
+         
+         
+        } catch (error) {
+          console.error('Error initializing Razorpay:', error);
+        }
+      }
+
 }

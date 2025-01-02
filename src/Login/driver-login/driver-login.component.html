@@ -1,15 +1,17 @@
-
-<div class="login-container">
-    <h1>Driver Login</h1>
-    <form (submit)="DriverLogin()">
-        <div class="form-group">
-            <label for="username">Enter User Name</label>
-            <input type="text" id="username" [(ngModel)]="user.username" name="username" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Enter Password</label>
-            <input type="password" id="password" [(ngModel)]="user.password" name="password" required />
-        </div>
-        <input type="submit" value="Login" (submit)="DriverLogin()" />
-    </form>
-</div>
+<div class="background">
+    <div class="login-container">
+        <h1>Driver Login</h1>
+        <form (submit)="DriverLogin()">
+            <div class="form-group">
+                <label for="username" style="color: rgb(62, 3, 3);">Enter User Name</label>
+                <input type="text" id="username" [(ngModel)]="user.username" name="username" required />
+            </div>
+            <div class="form-group">
+                <label for="password" style="color: rgb(62, 3, 3);">Enter Password</label>
+                <input type="password" id="password" [(ngModel)]="user.password" name="password" required />
+            </div>
+            <input type="submit" value="Login" (submit)="DriverLogin()" />
+        </form>
+    </div>
+    </div>
+   

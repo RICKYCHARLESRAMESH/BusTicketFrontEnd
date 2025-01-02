@@ -94,6 +94,13 @@ export class AdminService {
     });
   }
 
+  getAgencyByContactPersonName(contactPersonName:string): Observable<any> {
+ 
+    return this.httpClient.get(this.baseUrl+`agencies/contactPerson/${contactPersonName}`,{
+      responseType: 'text'
+    });
+  }
+
 //DRIVER  
   saveNewDrivers(driver:Driver): Observable<any> {
  
@@ -142,21 +149,21 @@ export class AdminService {
   getRouteById(routeId:RouteModel): Observable<any> {
  
     return this.httpClient.get(this.baseUrl+`routes/${routeId}`, {
-      responseType: 'text'
+      responseType: 'json'
     });
   }
 
   getRoutesByFromCity(fromCity:string): Observable<any> {
  
     return this.httpClient.get(this.baseUrl+`routes/from_city/${fromCity}`, {
-      responseType: 'text'
+      responseType: 'json'
     });
   }
 
   getRoutesByToCity(toCity:string): Observable<any> {
  
     return this.httpClient.get(this.baseUrl+`routes/to_city/${toCity}`, {
-      responseType: 'text'
+      responseType: 'json'
     });
   }
 
@@ -228,5 +235,16 @@ export class AdminService {
     return this.httpClient.get(this.baseUrl+`trips/${from_city}/${to_city}/${trip_date}`,{
       responseType: 'json'
     });
+
 }
+
+//REVIEWS
+
+getReviewById(reviewId:number): Observable<any> {
+  return this.httpClient.get(this.baseUrl+`reviews/${reviewId}`,{
+    responseType: 'json'
+  });
+}
+
+
 }

@@ -21,6 +21,7 @@ export class AgencyComponent implements OnInit {
   searchType: string = 'name'; // Default search by name
   searchAgencyName: string = ''; // Agency name to search
   searchAgencyId: number | null = null; // Agency ID to search
+  searchContactPersonName: string = ''; // Contact Person Name to search
   searchResult: Agency | null = null; // To hold the search result
 
   constructor(private adminService: AdminService, private router: Router) {}
@@ -84,12 +85,14 @@ export class AgencyComponent implements OnInit {
     });
   }
 
-  // Search agency by Name or ID
+  // Search agency by Name or ID or Contact Person Name
   searchAgency(): void {
     if (this.searchType === 'name') {
       this.searchAgencyByName();
     } else if (this.searchType === 'id' && this.searchAgencyId != null) {
       this.searchAgencyById();
+    } else if (this.searchType === 'contactPerson' && this.searchContactPersonName) {
+      this.searchAgencyByContactPersonName();
     }
   }
 
@@ -128,7 +131,6 @@ export class AgencyComponent implements OnInit {
 
     this.adminService.getAgencyById(this.searchAgencyId).subscribe({
       next: (data) => {
-        // Ensure the response is either an object of type 'Agency' or null
         if (data) {
           this.agency = [data]; // If agency found, store it as an array
         } else {
@@ -140,6 +142,32 @@ export class AgencyComponent implements OnInit {
         console.error('Error fetching agency:', err);
         alert(`Agency with ID ${this.searchAgencyId} not found.`);
         this.agency = []; // Clear agencies if an error occurs
+      }
+    });
+  }
+
+  // Search agency by Contact Person Name
+  searchAgencyByContactPersonName(): void {
+    if (!this.searchContactPersonName) {
+      alert('Please enter a valid Contact Person Name.');
+      return;
+    }
+
+    this.adminService.getAgencyByContactPersonName(this.searchContactPersonName).subscribe({
+      next: (data) => {
+        this.searchResult = JSON.parse(data); // Assuming the API returns JSON as a string
+        if (this.searchResult) {
+          this.agency = [this.searchResult]; // Display only the search result
+        } else {
+          alert(`Agency with Contact Person Name ${this.searchContactPersonName} not found.`);
+          this.agency = []; // Clear agencies if not found
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching agency:', err);
+        alert(`Agency with Contact Person Name ${this.searchContactPersonName} not found.`);
+        this.agency = []; // Clear agencies if an error occurs
+        this.searchResult = null;
       }
     });
   }

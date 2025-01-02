@@ -1,149 +1,105 @@
 <!-- Navbar -->
+<div class="background">
+ 
 <div class="navbar">
-    <div class="logo">Admin Dashboard</div>
-    <div class="nav-links">
-        <ul>
-            <li><a href="agency">Agencies</a></li>
-            <li><a href="bus">Buses</a></li>
-            <li><a href="admin-customer">Customers</a></li>
-            <li><a href="drivers">Drivers</a></li>
-            <li><a href="payments">Payments</a></li>
-            <li><a href="reviews">Reviews</a></li>
-            <li><a href="routes">Routes</a></li>
-            <li><a href="trips">Trips</a></li>
-        </ul>
-        <button class="logout-btn" (click)="logout()">Logout</button>
-    </div>
+  <div class="logo">Admin Dashboard</div>
+  <div class="nav-links">
+      <ul>
+          <li><a href="agency">Agencies</a></li>
+          <li><a href="bus">Buses</a></li>
+          <li><a href="admin-customer">Customers</a></li>
+          <li><a href="drivers">Drivers</a></li>
+          <li><a href="payments">Payments</a></li>
+          <li><a href="reviews">Reviews</a></li>
+          <li><a href="routes">Routes</a></li>
+          <li><a href="trips">Trips</a></li>
+      </ul>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
 </div>
 
 <!-- Content Area -->
 <div class="container mt-4">
-    <h2>Manage Buses</h2>
-  
-    <!-- Error Message -->
-    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-  
-    <!-- Add Bus Button -->
-    <button class="btn btn-primary mb-3" (click)="isCreate()">Add New Bus</button>
-  
-    <!-- Add Bus Form -->
-    <div *ngIf="isTrue" class="card p-3 mb-4">
-      <h3>Add New Bus</h3>
-      <form (ngSubmit)="saveNewBuses()">
-        <div class="form-group">
-          <label for="registrationNumber">Registration Number</label>
-          <input
-            type="text"
-            id="registrationNumber"
-            class="form-control"
-            [(ngModel)]="newBus.registrationNumber"
-            name="registrationNumber"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="capacity">Capacity</label>
-          <input
-            type="number"
-            id="capacity"
-            class="form-control"
-            [(ngModel)]="newBus.capacity"
-            name="capacity"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="type">Type</label>
-          <input
-            type="text"
-            id="type"
-            class="form-control"
-            [(ngModel)]="newBus.type"
-            name="type"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-success">Save Bus</button>
-        <button type="button" class="btn btn-secondary" (click)="isTrue = false">
-          Cancel
-        </button>
-      </form>
-    </div>
-  
-    <!-- Edit Bus Form -->
-    <div *ngIf="showEditBusForm" class="card p-3 mb-4">
-      <h3>Edit Bus</h3>
-      <form (ngSubmit)="updateBus(editBus.busId)">
-        <div class="form-group">
-          <label for="editRegistrationNumber">Registration Number</label>
-          <input
-            type="text"
-            id="editRegistrationNumber"
-            class="form-control"
-            [(ngModel)]="editBus.registrationNumber"
-            name="editRegistrationNumber"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="editCapacity">Capacity</label>
-          <input
-            type="number"
-            id="editCapacity"
-            class="form-control"
-            [(ngModel)]="editBus.capacity"
-            name="editCapacity"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="editType">Type</label>
-          <input
-            type="text"
-            id="editType"
-            class="form-control"
-            [(ngModel)]="editBus.type"
-            name="editType"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Update Bus</button>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="showEditBusForm = false"
-        >
-          Cancel
-        </button>
-      </form>
-    </div>
-  
-    <!-- Bus Table -->
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Bus ID</th>
-          <th>Registration Number</th>
-          <th>Capacity</th>
-          <th>Type</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let bus of bus">
-          <td>{{ bus.busId }}</td>
-          <td>{{ bus.registrationNumber }}</td>
-          <td>{{ bus.capacity }}</td>
-          <td>{{ bus.type }}</td>
-          <td>
-            <button
-              class="btn btn-info btn-sm"
-              (click)="showEditBusForm = true; editBus = bus"
-            >
-              Edit
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>Manage Buses</h2>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <!-- Edit Bus Form -->
+  <div *ngIf="showEditBusForm" class="card p-3 mb-4">
+    <h3>Edit Bus</h3>
+    <form (ngSubmit)="updateBus(editBus.busId)">
+      <div class="form-group">
+        <label for="editRegistrationNumber">Registration Number</label>
+        <input
+          type="text"
+          id="editRegistrationNumber"
+          class="form-control"
+          [(ngModel)]="editBus.registrationNumber"
+          name="editRegistrationNumber"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="editCapacity">Capacity</label>
+        <input
+          type="number"
+          id="editCapacity"
+          class="form-control"
+          [(ngModel)]="editBus.capacity"
+          name="editCapacity"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="editType">Type</label>
+        <input
+          type="text"
+          id="editType"
+          class="form-control"
+          [(ngModel)]="editBus.type"
+          name="editType"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Update Bus</button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="showEditBusForm = false"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+
+  <!-- Bus Table -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Bus ID</th>
+        <th>Registration Number</th>
+        <th>Capacity</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bus of bus">
+        <td>{{ bus.busId }}</td>
+        <td>{{ bus.registrationNumber }}</td>
+        <td>{{ bus.capacity }}</td>
+        <td>{{ bus.type }}</td>
+        <td>
+          <button
+            class="btn btn-info btn-sm"
+            (click)="showEditBusForm = true; editBus = bus"
+          >
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>

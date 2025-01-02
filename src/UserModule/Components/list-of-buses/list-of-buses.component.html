@@ -1,96 +1,152 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">Bus Booking</a>
+    <button
+      class="btn logout-btn ms-auto"
+      onclick="window.location.href='/'"
+    >
+      Logout
+    </button>
+  </div>
+</nav>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">Bus Booking</a>
-      <button
-        class="btn logout-btn ms-auto"
-        onclick="window.location.href='/'"
-      >
-        Logout
-      </button>
-    </div>
-  </nav>
+<!-- Main Container -->
+<div class="container">
+  <h1 class="text-center mb-4">List of Buses</h1>
 
-  <!-- Main Container -->
-  <div class="container">
-    <h1 class="text-center mb-4">List of Buses</h1>
-
-    <!-- Search Form -->
-    <div class="search-form">
-      <form (ngSubmit)="searchTrips()">
-        <div class="form-group mb-3">
-          <label for="fromCity">From City</label>
-          <input
-            type="text"
-            id="fromCity"
-            [(ngModel)]="fromCity"
-            name="fromCity"
-            class="form-control"
-            placeholder="Enter departure city"
-            required
-          />
-        </div>
-
-        <div class="form-group mb-3">
-          <label for="toCity">To City</label>
-          <input
-            type="text"
-            id="toCity"
-            [(ngModel)]="toCity"
-            name="toCity"
-            class="form-control"
-            placeholder="Enter destination city"
-            required
-          />
-        </div>
-
-        <div class="form-group mb-3">
-          <label for="tripDate">Trip Date and Time</label>
-          <input
-            type="datetime-local"
-            id="tripDate"
-            [(ngModel)]="tripDate"
-            name="tripDate"
-            class="form-control"
-            required
-          />
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">Search Trips</button>
-      </form>
-
-      <!-- Error Message -->
-      <div *ngIf="errorMessage" class="alert mt-3">
-        {{ errorMessage }}
+  <!-- Search Form -->
+  <div class="search-form">
+    <form (ngSubmit)="searchTrips()">
+      <div class="form-group mb-3">
+        <label for="fromCity">From City</label>
+        <input
+          type="text"
+          id="fromCity"
+          [(ngModel)]="fromCity"
+          name="fromCity"
+          class="form-control"
+          placeholder="Enter departure city"
+          required
+        />
       </div>
-    </div>
 
-    <!-- List of Trips -->
-    <div *ngIf="trips.length > 0" class="trip-list mt-5">
-      <h2 class="text-center mb-4">Available Trips</h2>
-      <div class="row">
-        <div class="col-md-4" *ngFor="let trip of trips">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Route: {{ trip.route.fromCity }} → {{ trip.route.toCity }}</h5>
-              <p class="card-text">
-                <strong>Trip Date:</strong> {{ trip.tripDate }}<br />
-                <strong>Departure Time:</strong> {{ trip.departureTime }}<br />
-                <strong>Arrival Time:</strong> {{ trip.arrivalTime }}<br />
-                <strong>Available Seats:</strong> {{ trip.availableSeats }}<br />
-                <strong>Fare:</strong> ₹{{ trip.fare }}
-              </p>
-              <button class="btn btn-primary w-100">Book</button>
-            </div>
+      <div class="form-group mb-3">
+        <label for="toCity">To City</label>
+        <input
+          type="text"
+          id="toCity"
+          [(ngModel)]="toCity"
+          name="toCity"
+          class="form-control"
+          placeholder="Enter destination city"
+          required
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="tripDate">Trip Date and Time</label>
+        <input
+          type="datetime-local"
+          id="tripDate"
+          [(ngModel)]="tripDate"
+          name="tripDate"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Search Trips</button>
+    </form>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert mt-3">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <!-- List of Trips -->
+  <div *ngIf="trips.length > 0" class="trip-list mt-5">
+    <h2 class="text-center mb-4">Available Trips</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let trip of trips">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Route: {{ trip.route.fromCity }} → {{ trip.route.toCity }}</h5>
+            <p class="card-text">
+              <strong>Trip Date:</strong> {{ trip.tripDate }}<br />
+              <strong>Departure Time:</strong> {{ trip.departureTime }}<br />
+              <strong>Arrival Time:</strong> {{ trip.arrivalTime }}<br />
+              <strong>Available Seats:</strong> {{ trip.availableSeats }}<br />
+              <strong>Fare:</strong> ₹{{ trip.fare }}
+            </p>
+            <button class="btn btn-primary w-100" (click)="navigateToBookingPage(trip)">Book</button>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- No Trips Found -->
-    <div *ngIf="trips.length === 0 && !errorMessage" class="alert mt-5">
-      No trips found. Please try a different search.
-    </div>
   </div>
 
+  <!-- User Details Form -->
+  <div *ngIf="selectedTrip" class="container mt-5">
+    <h2 class="text-center mb-4">User Details</h2>
+    <form>
+      <!-- Name Field -->
+      <div class="form-group mb-3">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+
+      <!-- Gender Field -->
+      <div class="form-group mb-3">
+        <label for="gender">Gender</label>
+        <select id="gender" class="form-control" required>
+          <option value="" disabled selected>Select your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <!-- Phone Number Field -->
+      <div class="form-group mb-3">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          class="form-control"
+          placeholder="Enter your phone number"
+          required
+        />
+      </div>
+
+      <!-- Proceed to Pay Button -->
+      <button type="button" class="btn btn-primary w-100 mt-3" (click)="payNow()">
+        Proceed to Pay
+      </button>
+    </form>
+  </div>
+
+  <!-- No Trips Found -->
+  <div *ngIf="trips.length === 0 && !errorMessage" class="alert mt-5">
+    No trips found. Please try a different search.
+  </div>
+</div>

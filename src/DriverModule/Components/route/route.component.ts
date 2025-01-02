@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouteModel } from '../../../models/route';
 import { DriverService } from '../../Services/driver.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-route',
-  imports: [CommonModule ],
+  imports: [CommonModule,FormsModule ],
   templateUrl: './route.component.html',
   styleUrl: './route.component.css'
 })
@@ -15,7 +17,7 @@ import { CommonModule } from '@angular/common';
     routes: RouteModel [] = []; // Array of Customer objects
     errorMessage: string | null = null;
   
-    constructor(private driverService: DriverService) {}
+    constructor(private driverService: DriverService,private router: Router) {}
   
     ngOnInit(): void {
       this.getAllRoutes();
@@ -32,6 +34,16 @@ import { CommonModule } from '@angular/common';
           this.errorMessage = 'Failed to retrieve customers. Please try again later.';
         }
       );
+    }
+
+    logout() {
+      // Perform any necessary cleanup or logout actions
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      console.log('Logged out successfully!');
+      
+      // Redirect to the index (home) component
+      this.router.navigate(['']);  // Navigate to the home path
     }
   }
   

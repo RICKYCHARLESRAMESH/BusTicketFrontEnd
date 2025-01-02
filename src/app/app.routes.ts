@@ -3,9 +3,6 @@ import { UserLoginComponent } from '../Login/user-login/user-login.component';
 import { DriverLoginComponent } from '../Login/driver-login/driver-login.component';
 import { AdminLoginComponent } from '../Login/admin-login/admin-login.component';
 import { IndexComponent } from '../index/index.component';
-import { CustomerDashboardComponent } from '../UserModule/Components/customer-dashboard/customer-dashboard.component';
-// import { TripComponent } from '../UserModule/Components/trip/trip.component';
-import { Component } from '@angular/core';
 import { AdminDashboardComponent } from '../AdminModule/Components/admin-dashboard/admin-dashboard.component';
 import { DriverDashBoardComponent } from '../DriverModule/Components/driver-dash-board/driver-dash-board.component';
 import { CustomerComponent } from '../DriverModule/Components/customer/customer.component';
@@ -21,6 +18,8 @@ import { AdminCustomerComponent } from '../AdminModule/Components/admin-customer
 import { AdmintripsComponent } from '../AdminModule/Components/admintrips/admintrips.component';
 import { AdminroutesComponent } from '../AdminModule/Components/adminroutes/adminroutes.component';
 import { ListOfBusesComponent } from '../UserModule/Components/list-of-buses/list-of-buses.component';
+import { UserReviewComponent } from '../UserModule/Components/user-review/user-review.component';
+import { NewCustomerComponent } from '../UserModule/Components/new-customer/new-customer.component';
 export const routes: Routes = [
 
    { path: '', component:IndexComponent},
@@ -30,7 +29,6 @@ export const routes: Routes = [
    { path: 'admin-login', component:AdminLoginComponent},
    { path: 'user-register',component:UserRegisterComponent},
 
-   { path: 'customer-dashboard', component:CustomerDashboardComponent},
    { path: 'admin-dashboard',  component: AdminDashboardComponent},
    { path: 'driver-dash-board', component:DriverDashBoardComponent},
    { path: 'customer',  component:CustomerComponent},
@@ -48,5 +46,7 @@ export const routes: Routes = [
 
    
 
-   {path: 'list-of-buses',component:ListOfBusesComponent}
+   {path: 'list-of-buses',component:ListOfBusesComponent},
+   {path: 'user-review',component:UserReviewComponent},
+   {path: 'new-customer',component:NewCustomerComponent}
 ];
