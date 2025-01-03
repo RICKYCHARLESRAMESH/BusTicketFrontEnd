@@ -1,105 +1,100 @@
 <!-- Navbar -->
 <div class="background">
  
-<div class="navbar">
-  <div class="logo">Admin Dashboard</div>
-  <div class="nav-links">
-      <ul>
-          <li><a href="agency">Agencies</a></li>
-          <li><a href="bus">Buses</a></li>
-          <li><a href="admin-customer">Customers</a></li>
-          <li><a href="drivers">Drivers</a></li>
-          <li><a href="payments">Payments</a></li>
-          <li><a href="reviews">Reviews</a></li>
-          <li><a href="routes">Routes</a></li>
-          <li><a href="trips">Trips</a></li>
-      </ul>
-      <button class="logout-btn" (click)="logout()">Logout</button>
+  <div class="navbar">
+    <div class="logo">Admin Dashboard</div>
+    <div class="nav-links">
+      <a href="agency" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Agencies</a>
+      <a href="bus" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;" >Buses</a>
+      <a href="admin-customer" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Customers</a>
+      <a href="drivers" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Drivers</a>
+      <a href="payments" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Payment</a>
+      <a href="reviews" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Reviews</a>
+      <a href="routes" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Routes</a>
+      <a href="#trips" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Trips</a>
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>
   </div>
-</div>
-
-<!-- Content Area -->
-<div class="container mt-4">
-  <h2>Manage Buses</h2>
-
-  <!-- Error Message -->
-  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-
-  <!-- Edit Bus Form -->
-  <div *ngIf="showEditBusForm" class="card p-3 mb-4">
-    <h3>Edit Bus</h3>
-    <form (ngSubmit)="updateBus(editBus.busId)">
-      <div class="form-group">
-        <label for="editRegistrationNumber">Registration Number</label>
-        <input
-          type="text"
-          id="editRegistrationNumber"
-          class="form-control"
-          [(ngModel)]="editBus.registrationNumber"
-          name="editRegistrationNumber"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="editCapacity">Capacity</label>
-        <input
-          type="number"
-          id="editCapacity"
-          class="form-control"
-          [(ngModel)]="editBus.capacity"
-          name="editCapacity"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="editType">Type</label>
-        <input
-          type="text"
-          id="editType"
-          class="form-control"
-          [(ngModel)]="editBus.type"
-          name="editType"
-          required
-        />
-      </div>
-      <button type="submit" class="btn btn-primary">Update Bus</button>
-      <button
-        type="button"
-        class="btn btn-secondary"
-        (click)="showEditBusForm = false"
-      >
-        Cancel
-      </button>
-    </form>
+   
+  <!-- Content Area -->
+  <div class="content-container">
+    <h1>Manage Buses</h1><br>
+   
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+   
+    <!-- Edit Bus Form -->
+    <div *ngIf="showEditBusForm"  class="card p-3af-1">
+      <h3 style="text-align: center;color: #f33a1a;">Edit Bus</h3>
+      <form (ngSubmit)="updateBus(editBus.busId)">
+        <div class="form-group">
+          <label for="editRegistrationNumber">Registration Number</label>
+          <input
+            type="text"
+            id="editRegistrationNumber"
+            class="form-control"
+            [(ngModel)]="editBus.registrationNumber"
+            name="editRegistrationNumber"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="editCapacity">Capacity</label>
+          <input
+            type="number"
+            id="editCapacity"
+            class="form-control"
+            [(ngModel)]="editBus.capacity"
+            name="editCapacity"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="editType">Type</label>
+          <input
+            type="text"
+            id="editType"
+            class="form-control"
+            [(ngModel)]="editBus.type"
+            name="editType"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Update Bus</button>
+        &nbsp;
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="showEditBusForm = false"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+   
+    <!-- Bus Table -->
+    <br><table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Bus ID</th>
+          <th>Registration Number</th>
+          <th>Capacity</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of bus">
+          <td>{{ bus.busId }}</td>
+          <td>{{ bus.registrationNumber }}</td>
+          <td>{{ bus.capacity }}</td>
+          <td>{{ bus.type }}</td>
+          <td>
+            <div class="edit-button">
+            <button class="btn btn-info btn-sm" (click)="showEditBusForm = true; editBus = bus">Edit</button></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <!-- Bus Table -->
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Bus ID</th>
-        <th>Registration Number</th>
-        <th>Capacity</th>
-        <th>Type</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let bus of bus">
-        <td>{{ bus.busId }}</td>
-        <td>{{ bus.registrationNumber }}</td>
-        <td>{{ bus.capacity }}</td>
-        <td>{{ bus.type }}</td>
-        <td>
-          <button
-            class="btn btn-info btn-sm"
-            (click)="showEditBusForm = true; editBus = bus"
-          >
-            Edit
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-</div>
+  </div>

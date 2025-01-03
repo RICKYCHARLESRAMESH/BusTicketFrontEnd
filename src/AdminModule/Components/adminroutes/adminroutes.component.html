@@ -1,132 +1,140 @@
 <!-- Navbar -->
-<div class="navbar">
-    <div class="logo">
-        Admin Dashboard
-    </div>
-    <div class="nav-links">
-        <ul>
-            <li><a href="agency">Agencies</a></li>
-            <li><a href="bus">Buses</a></li>
-            <li><a href="admin-customer">Customers</a></li>
-            <li><a href="drivers">Drivers</a></li>
-            <li><a href="payments">Payments</a></li>
-            <li><a href="reviews">Reviews</a></li>
-            <li><a href="routes">Routes</a></li>
-            <li><a href="trips">Trips</a></li>
-        </ul>
+<div class="background">
+    <div class="navbar">
+        <div class="logo">
+            Admin Dashboard
+        </div>
+        <div class="nav-links">
+            <a href="agency" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Agencies</a>
+            <a href="bus" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;" >Buses</a>
+            <a href="admin-customer" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Customers</a>
+            <a href="drivers" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Drivers</a>
+            <a href="payments" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Payment</a>
+            <a href="reviews" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Reviews</a>
+            <a href="routes" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Routes</a>
+            <a href="#trips" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Trips</a>
         <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
     </div>
-</div>
-
-<!-- Content Area -->
-<div class="content-container">
-    <h1>Manage Routes</h1>
-
-    <!-- Search Form -->
-    <div class="search-container">
-        <label for="searchById">Route ID:</label>
-        <input type="text" id="searchById" [(ngModel)]="routeId" placeholder="Enter Route ID" class="search-input">
-        <label for="searchByFromCity">From City:</label>
-        <input type="text" id="searchByFromCity" [(ngModel)]="fromCity" placeholder="Enter From City" class="search-input">
-        <label for="searchByToCity">To City:</label>
-        <input type="text" id="searchByToCity" [(ngModel)]="toCity" placeholder="Enter To City" class="search-input">
-
-        <!-- Search Button -->
-        <button (click)="searchRoutes()">Search</button>
-    </div>
-
-    <!-- Add Route Form -->
-    <button class="add-route-btn" (click)="isCreate()">Add Route</button>
-
-    <div *ngIf="isTrue">
-        <div>
-            <h2>Add New Route</h2>
-            <form #routeForm="ngForm" (ngSubmit)="saveNewRoutes()">
-                <div>
-                    <label for="fromCity">From City:</label>
-                    <input type="text" id="fromCity" name="fromCity" [(ngModel)]="newRoute.fromCity" required />
-                </div>
-
-                <div>
-                    <label for="toCity">To City:</label>
-                    <input type="text" id="toCity" name="toCity" [(ngModel)]="newRoute.toCity" required />
-                </div>
-
-                <div>
-                    <label for="breakPoints">Break Points:</label>
-                    <input type="text" id="breakPoints" name="breakPoints" [(ngModel)]="newRoute.breakPoints" required />
-                </div>
-
-                <div>
-                    <label for="duration">Duration:</label>
-                    <input type="text" id="duration" name="duration" [(ngModel)]="newRoute.duration" required />
-                </div>
-
-                <button type="submit" [disabled]="routeForm.invalid">Save Route</button>
-            </form>
+     
+    <!-- Content Area -->
+    <div class="content-container">
+        <h1 style="text-align: center;">Manage Routes</h1>
+     
+        <!-- Search Form -->
+        <div class="search-container">
+            <label for="searchById">Route ID:</label>
+            <input type="text" id="searchById" [(ngModel)]="routeId" placeholder="Enter Route ID" class="search-input">
+            <label for="searchByFromCity">From City:</label>
+            <input type="text" id="searchByFromCity" [(ngModel)]="fromCity" placeholder="Enter From City" class="search-input">
+            <label for="searchByToCity">To City:</label>
+            <input type="text" id="searchByToCity" [(ngModel)]="toCity" placeholder="Enter To City" class="search-input">
+     
+            <!-- Search Button -->
+           
+            <button (click)="searchRoutes()"><b>Search</b></button>
+           
         </div>
-    </div>
-
-    <!-- Routes Table -->
-    <table class="route-table">
-        <thead>
-            <tr>
-                <th>Route ID</th>
-                <th>From City</th>
-                <th>To City</th>
-                <th>Break Points</th>
-                <th>Duration</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let route of route">
-                <td>{{ route.routeId }}</td>
-                <td>{{ route.fromCity }}</td>
-                <td>{{ route.toCity }}</td>
-                <td>{{ route.breakPoints }}</td>
-                <td>{{ route.duration }}</td>
-                <td>
-                    <button (click)="editRouteDetails(route)">Edit</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Edit Route Form -->
-    <div *ngIf="showEditRouteForm">
-        <div>
-            <h2>Edit Route</h2>
-            <form #editRouteForm="ngForm" (ngSubmit)="updateRoutes(editRoute)">
-                <div>
-                    <label for="editFromCity">From City:</label>
-                    <input type="text" id="editFromCity" name="fromCity" [(ngModel)]="editRoute.fromCity" required />
-                </div>
-
-                <div>
-                    <label for="editToCity">To City:</label>
-                    <input type="text" id="editToCity" name="toCity" [(ngModel)]="editRoute.toCity" required />
-                </div>
-
-                <div>
-                    <label for="editBreakPoints">Break Points:</label>
-                    <input type="text" id="editBreakPoints" name="breakPoints" [(ngModel)]="editRoute.breakPoints" required />
-                </div>
-
-                <div>
-                    <label for="editDuration">Duration:</label>
-                    <input type="text" id="editDuration" name="duration" [(ngModel)]="editRoute.duration" required />
-                </div>
-
-                <button type="submit" [disabled]="editRouteForm.invalid">Update Route</button>
-            </form>
+     
+        <!-- Add Route Form -->
+        <button class="add-route-btn" (click)="isCreate()">Add Route</button>
+     
+        <div *ngIf="isTrue" class="card-rf2">
+            <div>
+                <h2 style="text-align: center; color: #f33a1a;">Add New Route</h2>
+                <form #routeForm="ngForm" (ngSubmit)="saveNewRoutes()">
+                    <div class="form-group">
+                        <label for="fromCity">From City:</label>
+                        <input type="text" id="fromCity" name="fromCity" [(ngModel)]="newRoute.fromCity" required />
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="toCity">To City:</label>
+                        <input type="text" id="toCity" name="toCity" [(ngModel)]="newRoute.toCity" required />
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="breakPoints">Break Points:</label>
+                        <input type="text" id="breakPoints" name="breakPoints" [(ngModel)]="newRoute.breakPoints" required />
+                    </div>
+     
+                    <div class="form-group" >
+                        <label for="duration">Duration:</label>
+                        <input type="text" id="duration" name="duration" [(ngModel)]="newRoute.duration" required />
+                    </div>
+     
+                    <button type="submit" class="btn btn-success">Save Route</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-secondary" (click)="isTrue = false">Cancel</button>
+     
+                </form>
+            </div>
         </div>
+          <!-- Edit Route Form -->
+          <div *ngIf="showEditRouteForm" class ="card-ef1">
+            <div>
+                <h2 style="text-align: center; color: #f33a1a;">Edit Route</h2>
+                <form #editRouteForm="ngForm" (ngSubmit)="updateRoutes(editRoute)">
+     
+                    <div class="form-group">
+                        <label for="editFromCity">From City:</label>
+                        <input type="text" id="editFromCity" name="fromCity" [(ngModel)]="editRoute.fromCity" required />
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="editToCity">To City:</label>
+                        <input type="text" id="editToCity" name="toCity" [(ngModel)]="editRoute.toCity" required />
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="editBreakPoints">Break Points:</label>
+                        <input type="text" id="editBreakPoints" name="breakPoints" [(ngModel)]="editRoute.breakPoints" required />
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="editDuration">Duration:</label>
+                        <input type="text" id="editDuration" name="duration" [(ngModel)]="editRoute.duration" required />
+                    </div>
+     
+                    <button type="submit" class="btn btn-success"><b>Update Route</b></button>
+                    &nbsp;
+                    <button type="button" class="btn btn-secondary" (click)="showEditRouteForm = false"><b>Cancel</b></button>
+                </form>
+            </div>
+        </div>
+     
+        <!-- Routes Table -->
+        <table class="route-table">
+            <thead>
+                <tr>
+                    <th>Route ID</th>
+                    <th>From City</th>
+                    <th>To City</th>
+                    <th>Break Points</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let route of route">
+                    <td>{{ route.routeId }}</td>
+                    <td>{{ route.fromCity }}</td>
+                    <td>{{ route.toCity }}</td>
+                    <td>{{ route.breakPoints }}</td>
+                    <td>{{ route.duration }}</td>
+                    <td>
+                        <button class="btn btn-success" (click)="editRouteDetails(route)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+     
+     
     </div>
-
-</div>
-
-<script>
-    function logout() {
-        location.href = '/';
-    }
-</script>
+     
+    <script>
+        function logout() {
+            location.href = '/';
+        }
+    </script>
+     

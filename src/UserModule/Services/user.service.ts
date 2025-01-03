@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trip } from '../../models/trips';
 import { Customer } from '../../models/customer';
+import { Payment } from '../../models/payments';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,11 @@ export class UserService {
     });
   }
 
+  createPayment(payment: Payment): Observable<any> {
+    return this.http.post(this.baseUrl +`payment/add`,payment, {
+      responseType: 'text'
+    });
+  }
  
 
 }

@@ -1,27 +1,26 @@
-<div class="container">
-    <!-- Navbar -->
-    <nav class="navbar">
-      <a href="/dashboard">Dashboard</a>
-      <a href="/agencies">Agencies</a>
-      <a href="/buses">Buses</a>
-      <a href="/customers">Customers</a>
-      <a href="/drivers">Drivers</a>
-      <a href="/payments">Payments</a>
-      <a href="/reviews">Reviews</a>
-      <a href="/routes">Routes</a>
-      <a href="/trips" class="active">Trips</a>
-      <button class="logout" (click)="logout()">Logout</button>
-    </nav>
-  
-    <!-- Error Message -->
-    <div *ngIf="errorMessage" class="error">
-      {{ errorMessage }}
-    </div>
-  
+<div class="background">
+ 
+  <div class="navbar">
+      <div class="logo">
+          Admin Dashboard
+      </div>
+      <div class="nav-links">
+          <a href="agency" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Agencies</a>
+          <a href="bus" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;" >Buses</a>
+          <a href="admin-customer" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Customers</a>
+          <a href="drivers" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Drivers</a>
+          <a href="payments" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Payment</a>
+          <a href="reviews" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Reviews</a>
+          <a href="routes" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Routes</a>
+          <a href="#trips" style="color: rgb(243, 237, 237); text-decoration: none; padding: 10px 15px;">Trips</a>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+  </div>
+  <div class="content-container">
+ 
     <!-- Trips Table -->
     <div class="content">
-      <h2>Manage Trips</h2>
-      <button class="btn btn-primary" (click)="isCreate()">Add New Trip</button>
+      <h2 style="text-align: center;">Manage Trips</h2>
       <table>
         <thead>
           <tr>
@@ -33,7 +32,6 @@
             <th>Boarding Address ID</th>
             <th>Dropping Address ID</th>
             <th>Trip Date</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -46,90 +44,15 @@
                 <td>{{ t.boardingAddressId }}</td>
                 <td>{{ t.droppingAddressId }}</td>
                 <td>{{ t.tripDate }}</td>
-                <td>
-                  <button class="btn-edit" (click)="editTripDetails(t)">Edit</button>
-                </td>
               </tr>
         </tbody>
       </table>
     </div>
-  
-    <!-- Add New Trip Form -->
-    <div *ngIf="isTrue" class="form-container">
-      <h3>Add New Trip</h3>
-      <form (ngSubmit)="saveNewTrip()">
-        <label>Departure Time:</label>
-        <input type="datetime-local" [(ngModel)]="newTrip.departureTime" name="departureTime" required />
-  
-        <label>Available Seats:</label>
-        <input type="number" [(ngModel)]="newTrip.availableSeats" name="availableSeats" required />
-  
-        <label>Fare:</label>
-        <input type="number" [(ngModel)]="newTrip.fare" name="fare" step="0.01" required />
-  
-        <label>Boarding Address ID:</label>
-        <input type="number" [(ngModel)]="newTrip.boardingAddressId" name="boardingAddressId" required />
-  
-        <label>Dropping Address ID:</label>
-        <input type="number" [(ngModel)]="newTrip.droppingAddressId" name="droppingAddressId" required />
-  
-        <label>Arrival Time:</label>
-        <input type="datetime-local" [(ngModel)]="newTrip.arrivalTime" name="arrivalTime" required />
-  
-        <label>Trip Date:</label>
-        <input type="date" [(ngModel)]="newTrip.tripDate" name="tripDate" required />
-  
-        <label>Route ID:</label>
-        <input type="number" [(ngModel)]="newTrip.routeId" name="routeId" required />
-  
-        <label>Bus ID:</label>
-        <input type="number" [(ngModel)]="newTrip.busId" name="busId" required />
-  
-        <label>Driver ID (Optional):</label>
-        <input type="number" [(ngModel)]="newTrip.driverId" name="driverId" />
-  
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-secondary" (click)="isTrue = false">Cancel</button>
-      </form>
-    </div>
-  
-    <!-- Edit Trip Form -->
-    <div *ngIf="showEditTripForm" class="form-container">
-      <h3>Edit Trip</h3>
-      <form (ngSubmit)="updateTrip(editTrip)">
-        <label>Departure Time:</label>
-        <input type="datetime-local" [(ngModel)]="editTrip.departureTime" name="departureTime" required />
-  
-        <label>Available Seats:</label>
-        <input type="number" [(ngModel)]="editTrip.availableSeats" name="availableSeats" required />
-  
-        <label>Fare:</label>
-        <input type="number" [(ngModel)]="editTrip.fare" name="fare" step="0.01" required />
-  
-        <label>Boarding Address ID:</label>
-        <input type="number" [(ngModel)]="editTrip.boardingAddressId" name="boardingAddressId" required />
-  
-        <label>Dropping Address ID:</label>
-        <input type="number" [(ngModel)]="editTrip.droppingAddressId" name="droppingAddressId" required />
-  
-        <label>Arrival Time:</label>
-        <input type="datetime-local" [(ngModel)]="editTrip.arrivalTime" name="arrivalTime" required />
-  
-        <label>Trip Date:</label>
-        <input type="date" [(ngModel)]="editTrip.tripDate" name="tripDate" required />
-  
-        <label>Route ID:</label>
-        <input type="number" [(ngModel)]="editTrip.routeId" name="routeId" required />
-  
-        <label>Bus ID:</label>
-        <input type="number" [(ngModel)]="editTrip.busId" name="busId" required />
-  
-        <label>Driver ID (Optional):</label>
-        <input type="number" [(ngModel)]="editTrip.driverId" name="driverId" />
-  
-        <button type="submit" class="btn btn-primary">Update</button>
-        <button type="button" class="btn btn-secondary" (click)="showEditTripForm = false">Cancel</button>
-      </form>
-    </div>
   </div>
-  
+ 
+    
+  <script>
+    function logout() {
+        location.href = '/';
+    }
+</script>

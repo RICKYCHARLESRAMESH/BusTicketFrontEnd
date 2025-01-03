@@ -1,5 +1,9 @@
- /* General styles */
- body {
+.background{
+    background-image: url('/assets/d8.jpg');
+    background-size: cover;
+    height: 368vh;
+}
+body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -7,7 +11,7 @@
  
 /* Navbar styles */
 .navbar {
-    background-color: #f33a1a; /* Redbus-inspired red */
+    background-color: #f33a1a;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -22,11 +26,6 @@
 .navbar .logo {
     font-size: 18px;
     font-weight: bold;
-}
- 
-.navbar .nav-links {
-    display: flex;
-    align-items: center;
 }
  
 .navbar .nav-links ul {
@@ -44,11 +43,6 @@
     text-decoration: none;
     color: white;
     font-size: 16px;
-    transition: color 0.3s;
-}
- 
-.navbar .nav-links ul li a:hover {
-    color: #ffe0e0;
 }
  
 .navbar .logout-btn {
@@ -58,75 +52,68 @@
     padding: 8px 15px;
     font-size: 14px;
     font-weight: bold;
-    cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
 }
  
-.navbar .logout-btn:hover {
-    background: #ffe0e0;
-    color: #f33a1a;
-}
  
-/* Page content styles */
-.background{
-    background-image: url('/assets/d8.jpg');
-    background-size: cover;
-    height: 368vh;
-}
+ 
 .content-container {
     margin: 20px;
     padding: 20px;
-    background: rgba(245, 243, 243, 0.6);
+    background: rgba(245, 243,243,0.6);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
  
 .content-container h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
     color: #f33a1a;
 }
  
-.add-bus-btn {
-    background: #f33a1a;
+h2 {
+    color: #ff3b30;
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+ 
+  h1 {
+    text-align: center;
+    color: #ff3b30;
+    margin-top: 20px;
+    font-size: 2.5em;
+  }
+ 
+.add-agency-button {
+    padding: 5px 15px; /* Reduced padding */
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px; /* Smaller font size */
     cursor: pointer;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-}
+    border-radius: 5px;
+  }
  
-.add-bus-btn:hover {
-    background: #ff5740;
-}
+  .add-agency-button:hover {
+    background-color: white;
+  }
  
-.bus-table {
+.agency-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top:20px;
 }
- 
-.bus-table th, .bus-table td {
-    border: 1px solid #ddd;
+.agency-table th, .agency-table td{
+    border:1px solid #ddd;
     text-align: left;
     padding: 8px;
 }
  
-.bus-table th {
+.agency-table th {
     background-color: #f33a1a;
     color: white;
 }
  
-.bus-table tr:nth-child(even) {
+.agency-table tr:nth-child(even) {
     background-color: #f9f9f9;
-}
-.btn {
-    margin-right: 10px; /* Adjust the value as needed */
 }
  
 .form-container {
@@ -155,9 +142,32 @@
     border-radius: 4px;
 }
  
-/* Add spacing for the error messages */
-.error {
-    margin-top: 5px; /* Space between input and error message */
-    color: red;
-    font-size: 12px;
+ 
+.p-3ed-2{
+    background-color: #f90101;
+    background: rgba(245, 243,243,0.6);
+    border: 0px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 500px; /* Set a specific width */
+    margin-left:auto;
+    margin-right: 0; /* Optional, but can help with clarity */
+    margin-top: 60px;
 }
+ 
+ 
+.p-3af-1{
+    background-color: #f90101;
+    background: rgba(245, 243,243,0.6);
+    border: 0px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 500px; /* Set a specific width */
+    margin-left: 0; /* This will push it to the right */
+    margin-top: 60px;
+ 
+ 
+}
+.edit-button {
+    background-color: #4CAF50;    
+  }

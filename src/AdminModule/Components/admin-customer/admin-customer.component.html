@@ -1,5 +1,5 @@
- <!-- Navbar -->
- <div class="background">
+<!-- Navbar -->
+<div class="background">
     <div class="navbar">
         <div class="logo">
             Admin Dashboard
@@ -8,17 +8,38 @@
             <ul>
                 <li><a href="agency">Agencies</a></li>
                 <li><a href="bus">Buses</a></li>
-                <li><a href="customers">Customers</a></li>
+                <li><a href="admin-customer">Customers</a></li>
                 <li><a href="drivers">Drivers</a></li>
                 <li><a href="payments">Payments</a></li>
                 <li><a href="reviews">Reviews</a></li>
-                <li><a href="routes">Routes</a></li>
-                <li><a href="trips">Trips</a></li>
+                <li><a href="adminroutes">Routes</a></li>
+                <li><a href="admintrips">Trips</a></li>
             </ul>
-            <button class="logout-btn" onclick="logout()">Logout</button>
+            <button class="logout-btn" (click)="logout()">Logout</button>
         </div>
     </div>
- 
+
+    <!-- Search Dialog Box -->
+    <div id="searchDialog" class="dialog-box">
+        <div class="dialog-content">
+            <h2>Search Customers</h2>
+            <!-- Customer ID Search -->
+            <label for="customerId">Customer ID:</label>
+            <input type="number" id="customerId" [(ngModel)]="customerId" placeholder="Enter Customer ID">
+            <button class="search-btn" (click)="getCustomerById()">Search by ID</button>
+
+            <!-- Email Search -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="email" placeholder="Enter Email">
+            <button class="search-btn" (click)="getCustomersByEmail()">Search by Email</button>
+
+            <!-- Phone Search -->
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" [(ngModel)]="phone" placeholder="Enter Phone">
+            <button class="search-btn" (click)="getCustomersByPhone()">Search by Phone</button>
+        </div>
+    </div>
+
     <!-- Content Area -->
     <div class="content-container">
         <h1 style="text-align: center;">Manage Customers</h1>
@@ -40,10 +61,14 @@
                 </tr>
             </tbody>
         </table>
-    </div></div>
- 
-    <script>
-        function logout() {
-            location.href = '/';
-        }
-    </script>
+    </div>
+</div>
+
+<script>
+    // Logout method using Angular's Router
+    function logout() {
+      // Ensure the routing is handled by Angular
+     
+      location.href = '/'; // Adjust the path to match your Angular route
+    }
+  </script>

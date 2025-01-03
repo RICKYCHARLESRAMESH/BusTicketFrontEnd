@@ -6,6 +6,7 @@ import { Driver } from '../../models/driver';
 import { RouteModel } from '../../models/route';
 import { Bus } from '../../models/bus';
 import { Trip } from '../../models/trips';
+import { PaymentStatus } from '../../models/payments';
 
 @Injectable({
   providedIn: 'root'
@@ -246,5 +247,35 @@ getReviewById(reviewId:number): Observable<any> {
   });
 }
 
+
+// PAYMENTS
+getPaymentsByStatus(paymentStatus: PaymentStatus): Observable<any> {
+  return this.httpClient.get(this.baseUrl+`payment/status/${paymentStatus}`,{
+    responseType: 'json'
+  });
+}
+
+
+//CUSTOMERS
+
+  // Get customers by email
+  getCustomersByEmail(email: string): Observable<any> {
+    return this.httpClient.get(this.baseUrl+`customers/email/${email}`, {
+      responseType: 'json',
+    });
+  }
+
+  // Get customers by phone
+  getCustomersByPhone(phone: string): Observable<any> {
+    return this.httpClient.get(this.baseUrl+`customers/phone/${phone}`, {
+      responseType: 'json',
+    });
+  }
+
+  getCustomerById(customerId: number): Observable<any> {
+    return this.httpClient.get(this.baseUrl+`customers/${customerId}`, {
+      responseType: 'json',
+    });
+  }
 
 }

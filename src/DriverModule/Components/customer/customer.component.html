@@ -1,10 +1,21 @@
-
+<div class="background">
     <div class="navbar">
         <div class="logo">Customer Management</div>
-        <button class="logout-btn" onclick="logout()">Logout</button>
+        <div class="nav-left">
+           
+            <i class="fas fa-user-tie"></i> Driver-Dashboard
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="customer" routerLink="customer">Customer</a></li>
+                <li><a href="route">Route</a></li>
+            </ul>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
     </div>
-
+ 
     <!-- Table Container -->
+ 
     <div class="table-container">
         <h1>Customer Details</h1>
         <table>
@@ -25,6 +36,14 @@
                 </tr>
             </tbody>
         </table>
-    </div> 
-
-
+    </div>
+ 
+    <script>
+        function logout() {
+            location.href = '/';
+        }
+    </script>
+</div>
+   
+ 
+ 

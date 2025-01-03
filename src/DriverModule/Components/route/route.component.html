@@ -1,34 +1,46 @@
-<div class="navbar">
-    <div class="nav-left">Driver Dashboard</div>
-    <div class="nav-right">
-        <ul>
-            <li><a href="/customers">Customer</a></li>
-            <li><a href="/routes">Route</a></li>
-            <li><button class="logout-btn" onclick="logout()">Logout</button></li>
-        </ul>
+<div class="background">
+    <div class="navbar">
+        <div class="logo">Route Management</div>
+        <div class="nav-left">
+           
+            <i class="fas fa-user-tie"></i> Driver-Dashboard
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="customer" routerLink="customer">Customer</a></li>
+                <li><a href="route">Route</a></li>
+            </ul>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+    <div class="table-container">
+        <h1>Available Routes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Route ID</th>
+                    <th>From City</th>
+                    <th>To City</th>
+                    <th>Break Points</th>
+                    <th>Duration (hrs)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let route of routes">
+                    <td>{{route.routeId }}</td>
+                    <td>{{route.fromCity}}</td>
+                    <td>{{route.toCity  }}</td>
+                    <td>{{route.breakPoints  }}</td>
+                    <td>{{route.duration  }}</td>
+                </tr>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
     </div>
 </div>
-
-<div class="content-container">
-    <h1>Available Routes</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Route ID</th>
-                <th>From City</th>
-                <th>To City</th>
-                <th>Break Points</th>
-                <th>Duration (hrs)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let route of routes">
-                <td>{{ route.routeId }}</td>
-                <td>{{ route.fromCity }}</td>
-                <td>{{ route.toCity }}</td>
-                <td>{{ route.breakPoints }}</td>
-                <td>{{ route.duration }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+ 
+    <script>
+        function logout() {
+            location.href = '/';
+        }
+    </script>

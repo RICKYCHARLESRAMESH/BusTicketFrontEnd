@@ -18,7 +18,7 @@ import { AdminCustomerComponent } from '../AdminModule/Components/admin-customer
 import { AdmintripsComponent } from '../AdminModule/Components/admintrips/admintrips.component';
 import { AdminroutesComponent } from '../AdminModule/Components/adminroutes/adminroutes.component';
 import { ListOfBusesComponent } from '../UserModule/Components/list-of-buses/list-of-buses.component';
-import { UserReviewComponent } from '../UserModule/Components/user-review/user-review.component';
+import { UserReviewComponent } from '../UserModule/Components/user-confirmation/user-review.component';
 import { NewCustomerComponent } from '../UserModule/Components/new-customer/new-customer.component';
 export const routes: Routes = [
 

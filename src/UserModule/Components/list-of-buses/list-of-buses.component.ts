@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouteModel } from '../../../models/route';
 import { Router } from '@angular/router';
+import { Payment, PaymentStatus } from '../../../models/payments';
 declare var Razorpay:any;
 
 @Component({
@@ -22,6 +23,8 @@ export class ListOfBusesComponent implements OnInit {
   errorMessage: string = '';
   trip:any;
   fare: any;
+  paymentStatus: "Success" | "Failed" | undefined;
+  paymentSuccess: boolean | undefined;
 
   constructor(private userService: UserService,private router: Router) {}
 
@@ -57,13 +60,41 @@ navigateToBookingPage(trip: any) {
     });
   }
 
+   // Method to add payment (everything under userService)
+   addPayment() {
+    // Ensure paymentStatus is a valid PaymentStatus enum value
+    const paymentEnumStatus: PaymentStatus = PaymentStatus[this.paymentStatus as keyof typeof PaymentStatus];
+
+    const payment: Payment = {
+      booking: null,
+      customer: null,
+      amount: this.selectedTrip.fare,
+      paymentDate: new Date().toISOString(),
+      paymentStatus: paymentEnumStatus // Use the enum value here
+      ,
+      paymentId: 0
+    };
+
+    this.userService.createPayment(payment).subscribe(
+      (response) => {
+        console.log('Payment added successfully:', response);
+        this.paymentSuccess = true; // Show success message
+      },
+      (error) => {
+        console.error('Error adding payment:', error);
+        this.paymentSuccess = false; // Optionally handle error state
+      }
+    );
+    this.payNow(payment.amount)
+  }
 
 
 
-  payNow() {
+
+  payNow(fare: number) {
     const RazorpayOptions = {
       key: 'rzp_test_zWhcqYLonnFntk',
-      amount: this.fare * 100,
+      amount: fare * 100,
       currency: 'INR',
       name: 'Bus Ticket',
       description: 'Sample Razorpay demo',

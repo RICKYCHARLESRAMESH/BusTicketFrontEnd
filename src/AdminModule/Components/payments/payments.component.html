@@ -1,45 +1,54 @@
-
-  <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      Admin Dashboard
-    </div>
-    <div class="nav-links">
-      <ul>
-        <li><a href="agency">Agencies</a></li>
-        <li><a href="bus">Buses</a></li>
-        <li><a href="customers">Customers</a></li>
-        <li><a href="drivers">Drivers</a></li>
-        <li><a href="payments">Payments</a></li>
-        <li><a href="reviews">Reviews</a></li>
-        <li><a href="routes">Routes</a></li>
-        <li><a href="trips">Trips</a></li>
-      </ul>
-      <button class="logout-btn" (click)="logout()">Logout</button>
-    </div>
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    Admin Dashboard
   </div>
+  <div class="nav-links">
+    <ul>
+      <li><a href="agency">Agencies</a></li>
+      <li><a href="bus">Buses</a></li>
+      <li><a href="customers">Customers</a></li>
+      <li><a href="drivers">Drivers</a></li>
+      <li><a href="payments">Payments</a></li>
+      <li><a href="reviews">Reviews</a></li>
+      <li><a href="adminroutes">Routes</a></li>
+      <li><a href="admintrips">Trips</a></li>
+    </ul>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</div>
 
-  <!-- Content Container -->
-  <div class="content-container">
-    <h1>Payment Table</h1>
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>Payment ID</th>
-          <th>Amount</th>
-          <th>Payment Date</th>
-          <th>Payment Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let adminpayment of payments">
-          <td>{{ adminpayment.paymentId }}</td>
-          <td>{{ adminpayment.amount }}</td>
-          <td>{{ adminpayment.paymentDate }}</td>
-          <td>{{ adminpayment.paymentStatus }}</td>
+<!-- Content Container -->
+<div class="content-container">
+  <h1>Payment Table</h1>
+
+  <!-- Search by Status -->
+<div class="search-container">
+  <label for="status">Search by Status:</label>
+  <select id="status" #statusSelect>
+    <option value="">All</option>
+    <option value="Success">Success</option>
+    <option value="Failed">Failed</option>
+  </select>
+  <button (click)="searchByStatus(statusSelect.value)">Search</button>
+</div>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Payment ID</th>
+        <th>Amount</th>
+        <th>Payment Date</th>
+        <th>Payment Status</th>
       </tr>
-      </tbody>
-    </table>
-  </div>
-
- 
+    </thead>
+    <tbody>
+      <tr *ngFor="let adminpayment of payments">
+        <td>{{ adminpayment.paymentId }}</td>
+        <td>{{ adminpayment.amount }}</td>
+        <td>{{ adminpayment.paymentDate }}</td>
+        <td>{{ adminpayment.paymentStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
