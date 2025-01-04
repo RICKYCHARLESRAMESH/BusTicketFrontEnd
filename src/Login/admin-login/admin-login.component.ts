@@ -23,7 +23,7 @@ export class AdminLoginComponent{
     this.user.role="ROLE_ADMIN"
     this.authenticationService.AdminLoginComponent(this.user).subscribe((e)=>{
     this.token=e.token;
-    alert(JSON.stringify(e));
+    // alert(JSON.stringify(e));
     localStorage.setItem('token',this.token);
     localStorage.setItem('role',this.user.role)
     this.router.navigate(["/admin-dashboard"]);

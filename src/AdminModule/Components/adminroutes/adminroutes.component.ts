@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/router';
 import { Router } from '@angular/router'; 
 import { AdminService } from '../../Services/admin.service';
 import { RouteModel } from '../../../models/route';

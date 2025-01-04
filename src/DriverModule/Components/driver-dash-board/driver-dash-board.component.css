@@ -122,42 +122,16 @@ body {
     background: linear-gradient(120deg, #d2b48c, #8B4513, #d2b48c); /* Light brown gradient */
     z-index: -1;
     filter: blur(5px);
-    animation: shineEffect 3s linear infinite;
 }
- 
-@keyframes shineEffect {
-    0% {
-        background-position: 50% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
- 
- 
  
 .content-container h1 {
     font-size: 28px;
     margin-bottom: 10px;
     color:  #8B4513;
     position: relative;
-    animation: slideIn 2s ease-in-out forwards;
     text-align: center;
 }
-@keyframes slideIn {
-    0% {
-        transform: translateX(-100%);
-    }
-    50% {
-        transform: translateX(50%);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
+ 
 .content-container p {
     font-size: 16px;
     color: #333;
@@ -179,4 +153,3 @@ body {
         margin: 10px 0;
     }
 }
- 

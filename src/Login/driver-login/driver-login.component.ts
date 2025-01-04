@@ -27,14 +27,14 @@ export class DriverLoginComponent {
     this.user.role="ROLE_DRIVER"
     this.authenticationService.DriverLoginComponent(this.user).subscribe((e)=>{
     this.token=e.token;
-    alert(JSON.stringify(e));
+    // alert(JSON.stringify(e));
 
     if (this.token) {
       // Store token and username in local/session storage
       localStorage.setItem('token', this.token);
       sessionStorage.setItem('token', this.token);
       localStorage.setItem('role',this.user.role);
-      console.log(this.user.role);
+      // console.log(this.user.role);
      
       this.router.navigate(["/driver-dash-board"]);
     }

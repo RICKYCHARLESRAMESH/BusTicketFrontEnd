@@ -10,7 +10,6 @@ import { RouteComponent } from '../DriverModule/Components/route/route.component
 import { AboutPageComponent } from '../about-page/about-page.component';
 import { UserRegisterComponent } from '../Login/user-register/user-register.component';
 import { PaymentsComponent } from '../AdminModule/Components/payments/payments.component';
-import { ReviewsComponent } from '../AdminModule/Components/reviews/reviews.component';
 import { AgencyComponent } from '../AdminModule/Components/agency/agency.component';
 import { BusComponent } from '../AdminModule/Components/bus/bus.component';
 import { DriversComponent } from '../AdminModule/Components/drivers/drivers.component';
@@ -36,7 +35,6 @@ export const routes: Routes = [
    { path: 'about-page', component:AboutPageComponent},
 
    { path: 'payments', component:PaymentsComponent},
-   { path: 'reviews',component:ReviewsComponent},
    { path: 'admin-customer',component:AdminCustomerComponent},
    { path: 'agency',component:AgencyComponent},
    { path: 'bus',component:BusComponent},

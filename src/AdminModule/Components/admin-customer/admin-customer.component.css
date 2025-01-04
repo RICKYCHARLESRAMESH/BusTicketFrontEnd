@@ -1,8 +1,8 @@
-  /* General styles */
-  .background{
+/* General styles */
+.background{
     background-image: url('/assets/d8.jpg');
     background-size: cover;
-    height: 187vh;
+    height: 340vh;
 }
   body {
     margin: 0;
@@ -108,3 +108,4 @@
 .customer-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+ 

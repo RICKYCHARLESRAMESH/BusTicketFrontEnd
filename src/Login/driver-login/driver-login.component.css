@@ -14,24 +14,13 @@ html {
     height: 100%;
 }
  
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('https://th.bing.com/th/id/OIP.knGlwYXxr8JJfKH21zRjIwHaEK?rs=1&pid=ImgDetMain');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-}
- 
 /* Style for the login container */
 .login-container {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
     padding: 50px;
-    background-color: rgba(245, 243, 243, 0.6); /* Dark background with slight transparency */
+    background: linear-gradient(to right, rgba(238, 215, 178, 0.8),rgba(160, 115, 97, 0.8));/* Dark background with slight transparency */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(75, 3, 3, 0.804);     /*background shadow effect for the box */
     position: absolute;
@@ -45,7 +34,7 @@ body {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
-    color: #410303; /* White text for contrast */
+    color: black; /* White text for contrast */
 }
  
 /* Style for the form groups */
@@ -77,7 +66,7 @@ body {
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #3188e4; /* Bright button color */
+    background: linear-gradient(45deg, #15058a, #3d44c9); /* Bright button color */
     color: white;
     font-size: 16px;
     border: none;

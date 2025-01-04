@@ -1,65 +1,97 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: url('https://img.freepik.com/premium-vector/public-transport-stop-autobus-vector-bus-stop-transport-public-service-illustration_102902-3267.jpg?w=1060') no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap');
+
+.navbar-brand {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+  font-style: normal;
+  color: #ffffff; /* Orange color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow effect */
 }
-/* Navbar Styles */
+
+.custom-link {
+  color: hwb(169 4% 39%); /* Choose your desired color */
+  text-decoration: none;
+  font-size: 18px; /* Increase the font size here */
+  font-weight: bold;
+}
+
+.custom-link:hover {
+  color: #0c895d; /* Darker color on hover */
+  text-decoration: underline;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.background {
+  background-image: url('../assets/dHome.jpg'); /* Path to the background image */
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Keeps the background fixed during scrolling */
+  background-position: center; /* Centers the image */
+  min-height: 100vh; /* Ensures it covers the viewport height */
+  display: flex; /* Flexbox to center content if needed */
+  flex-direction: column; /* Content flows vertically */
+}
+
+/* Navbar with Gradient and Transparency */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  background: linear-gradient(90deg, rgba(84, 73, 70, 0.8), rgba(255, 153, 0, 0.26)); /* Gradient with transparency */
+  border-bottom: 2px solid rgba(133, 117, 94, 0); /* Subtle bottom border */
+  backdrop-filter: blur(8px); /* Adds a blur effect for a frosted glass look */
 }
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 1rem;
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 36px;
 }
-.navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
+
+.btn-outline-success {
+  margin-left: 10px;
+  color: #ffffff; /* Text color */
+  background-color: #ff5722; /* Background color */
+  border-color: #ff5722; /* Border color */
+  transition: all 0.3s ease; /* Smooth transition */
 }
-/* Main Content */
-.container {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    margin: 20px auto;
-    width: 80%;
+
+.btn-outline-success:hover {
+  color: #ff5722; /* Text color on hover */
+  background-color: #ffffff; /* Background color on hover */
+  border-color: #ff5722; /* Border color on hover */
 }
-.container h1 {
-    font-size: 2.5rem;
+
+/* Login Icon instead of button */
+.login-icon {
+  color: #ffffff;
+  font-size: 24px;
+  transition: all 0.3s ease; /* Smooth transition */
 }
-.container p {
-    font-size: 1.2rem;
+
+.login-icon:hover {
+  color: #ff5722; /* Color change on hover */
 }
-/* Footer Styles */
-footer {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: auto;
+
+/* Footer with Gradient and Transparency */
+.footer-custom {
+  background: linear-gradient(90deg, rgba(255, 153, 0, 0.26), rgba(84, 73, 70, 0.8)); /* Gradient with transparency */
+  color: #ffffff;
+  backdrop-filter: blur(8px); /* Adds a blur effect for a frosted glass look */
 }
-.footer-links {
-    margin-top: 10px;
+
+/* About Button without Box */
+.about-btn {
+  color: #ffffff; /* White text */
+  background-color: #6c757d00; /* Grey background */
+  border: none; /* Remove the border */
+  transition: all 0.3s ease; /* Smooth transition */
 }
-.footer-links a {
-    color: #5dade2;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1rem;
-}
-.footer-links a:hover {
-    text-decoration: underline;
+
+.about-btn:hover {
+  color: #ffffff; /* Grey text on hover */
+  background-color: #00000044; /* White background on hover */
+  border: none; /* Remove border on hover */
 }

@@ -1,81 +1,119 @@
-/* new-customer.component.css */
+/* Add Font Awesome icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+.background {
+  background-image: url('/assets/d10.jpg'); /* Insert your image path here */
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  height: 100vh; /* Sets the height to cover the viewport */
+  width: 100vw; /* Sets the width to cover the viewport */
+  margin: 0; /* Removes any default margin */
+  padding: 0; /* Removes any default padding */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
 body {
-    background-color: #1e2a47; /* Dark blue background */
-    color: #ffffff; /* White text */
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #2a3b59; /* Slightly lighter dark blue background */
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    text-align: center;
-    color: #ffffff; /* White color for the title */
-    margin-bottom: 30px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    color: #dfe3e9; /* Light gray color for labels */
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-  
-  input[type="text"],
-  input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #3a4a6e; /* Slightly darker border */
-    border-radius: 4px;
-    background-color: #3a4a6e; /* Darker blue input background */
-    color: #ffffff;
-    font-size: 14px;
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus {
-    border-color: #4b6a92; /* Lighter blue border on focus */
-    outline: none;
-  }
-  
-  button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #004a8b; /* Dark blue button */
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0066cc; /* Light blue on hover */
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  .error-message {
-    color: #ff4c4c; /* Red color for error messages */
-    background-color: #f8d7da; /* Light red background for errors */
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
+  background-color: #1e2a47; /* Dark blue background */
+  color: #ffffff; /* White text */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px; /* Ensure the container width is the same as originally defined */
+  margin: 50px auto; /* Center the container with a top margin */
+  padding: 30px; /* Same padding as before */
+  background-color: #2a3b59; /* Dark blue background */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add slight shadow effect */
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.search-form {
+  background-color: rgba(255, 255, 255, 0.171); /* White with slight transparency for form background */
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 15px rgba(78, 99, 216, 0.5); /* Reddish outerline effect */
+  position: relative;
+  z-index: 3; /* Make sure it's on top */
+}
+
+.search-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.search-form .form-group label {
+  color: #ffffff; /* White text for the labels */
+  font-weight: bold; /* Bold styling for emphasis */
+  margin-bottom: 0.5rem; /* Spacing between label and input */
+  display: block; /* Ensures proper spacing */
+}
+
+.search-form .form-control {
+  border-radius: 5px;
+  border: 2px solid #ddd; /* Default light gray border */
+  background-color: #ffffff; /* White background inside the input box */
+  padding: 0.35rem 1rem; /* Padding for better input spacing */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+  width: 100%; /* Ensure the width remains at 100% of its parent container */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.search-form .form-control:focus {
+  border-color: #4e4ed8; /* Reddish border color on focus */
+  box-shadow: 0 0 8px rgba(78, 96, 216, 0.5); /* Reddish shadow around the input */
+}
+
+.search-form label i {
+  margin-right: 8px; /* Space between the icon and text */
+  color: #4e6ad8; /* Blue color for icons */
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #004a8b; /* Dark blue button */
+  color: #ffffff; /* Ensure white text */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: capitalize; /* Consistent capitalization */
+}
+
+button:hover {
+  background-color: #0066cc; /* Light blue on hover */
+}
+
+button:focus {
+  outline: none;
+}
+
+.error-message {
+  color: #ff4c4c; /* Red color for error messages */
+  background-color: #f8d7da; /* Light red background for errors */
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #21227a;
+  border-color: #4e6ed8;
+  color: #ffffff; /* Ensure white text */
+}
+
+.btn-primary:hover {
+  background-color: #405eb9;
+  border-color: #4840b9;
+  color: #ffffff; /* Ensure white text on hover */
+}

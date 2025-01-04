@@ -1,3 +1,4 @@
+<div class="background">
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
@@ -21,28 +22,30 @@
     <form (ngSubmit)="searchTrips()">
       <div class="form-group mb-3">
         <label for="fromCity"><i class="fas fa-bus"></i>From City</label>
-        <input
-          type="text"
+        <select
           id="fromCity"
           [(ngModel)]="fromCity"
           name="fromCity"
           class="form-control"
-          placeholder="Enter departure city"
           required
-        />
+        >
+          <option value="" disabled selected>Select departure city</option>
+          <option *ngFor="let city of ['Bangalore', 'Mumbai', 'Delhi', 'Hyderabad', 'Kolkata', 'Chennai', 'Jaipur', 'Lucknow', 'Patna', 'Ahmedabad', 'Pune']" [value]="city">{{ city }}</option>
+        </select>
       </div>
 
       <div class="form-group mb-3">
-        <label for="toCity">  <i class="fas fa-bus"></i>To City</label>
-        <input
-          type="text"
+        <label for="toCity"><i class="fas fa-bus"></i>To City</label>
+        <select
           id="toCity"
           [(ngModel)]="toCity"
           name="toCity"
           class="form-control"
-          placeholder="Enter destination city"
           required
-        />
+        >
+          <option value="" disabled selected>Select destination city</option>
+          <option *ngFor="let city of ['Chennai', 'Pune', 'Agra', 'Vijayawada', 'Durgapur', 'Madurai', 'Udaipur', 'Kanpur', 'Gaya', 'Surat', 'Goa', 'Mysore', 'Jaipur', 'Nagpur', 'Coimbatore', 'Siliguri', 'Bangalore', 'Varanasi', 'Ranchi', 'Rajkot']" [value]="city">{{ city }}</option>
+        </select>
       </div>
 
       <div class="form-group mb-3">
@@ -157,4 +160,5 @@
   <div *ngIf="trips.length === 0 && !errorMessage" class="alert mt-5">
     No trips found. Please try a different search.
   </div>
+</div>
 </div>

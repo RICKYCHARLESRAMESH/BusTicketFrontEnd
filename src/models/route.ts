@@ -4,5 +4,9 @@ export interface RouteModel {
     toCity: string;       
     breakPoints: number;  
     duration: number;     
+
   }
+
+
+  
   

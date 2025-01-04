@@ -2,7 +2,7 @@
  .background{
   background-image: url('/assets/d8.jpg');
   background-size: cover;
-  height:200vh;
+  height:220vh;
  }
  body {
     margin: 0;
@@ -88,8 +88,6 @@
     color: #f33a1a;
   }
  
- 
- 
   /* Table styles */
   .styled-table {
     width: 100%;
@@ -106,6 +104,7 @@
   .styled-table th {
     background-color: #f33a1a;
     font-weight: bold;
+    color: white;
   }
  
   .styled-table tr:nth-child(even) {

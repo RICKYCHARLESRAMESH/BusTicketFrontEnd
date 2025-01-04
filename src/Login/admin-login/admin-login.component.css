@@ -1,6 +1,6 @@
 /* Apply the background image to the HTML element */
 .background {
-    background-image: url('/assets/d4.jpg');
+    background-image: url('/assets/d13.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -77,8 +77,7 @@ body {
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #3188e4; /* Bright button color */
-    color: white;
+    background: linear-gradient(45deg, #15058a, #3d44c9);    color: white;
     font-size: 16px;
     border: none;
     border-radius: 4px;

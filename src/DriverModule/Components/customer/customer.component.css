@@ -10,7 +10,7 @@ body {
     background-size: cover; /* Ensures the image covers the entire viewport */
     background-position: center center; /* Centers the image */
     background-attachment: fixed;
-    height: 275vh;;
+    height: 500vh;;
 }
  
 /* Navbar styles */

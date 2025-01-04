@@ -1,52 +1,83 @@
+/* Apply the background image to the HTML element */
+.background {
+    background-image: url('/assets/d4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+html {
+    height: 100%;
+}
+ 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://th.bing.com/th/id/OIP.knGlwYXxr8JJfKH21zRjIwHaEK?rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+ 
 /* Style for the login container */
 .login-container {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 50px;
+    background-color: rgba(245, 243, 243, 0.6); /* Dark background with slight transparency */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(12, 40, 120, 0.9);     /*background shadow effect for the box */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-/* Style for the form heading */
+ 
+/* Style for the form heading  -> Driver Login*/
 .login-container h1 {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+    color: #410303; /* White text for contrast */
 }
-
+ 
 /* Style for the form groups */
 .form-group {
     margin-bottom: 15px;
 }
-
+ 
 /* Style for form labels */
 .form-group label {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
+    color: #081708; /* Light gray text for labels */
 }
-
+ 
 /* Style for input fields */
 .form-group input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #437fcd; /* Dark border */
     border-radius: 4px;
     margin-top: 5px;
+    background-color: #f3eaea; /* Dark input background */
+    color: #141212; /* White text inside inputs */
 }
-
+ 
 /* Style for the submit button */
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background: linear-gradient(45deg, #15058a, #3d44c9); /* Double shade radiant gradient */
     color: white;
     font-size: 16px;
     border: none;
@@ -54,8 +85,14 @@ input[type="submit"] {
     cursor: pointer;
     margin-top: 15px;
 }
-
+ 
 /* Hover effect for the submit button */
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #4a88cb; /* Darker button color on hover */
+}
+ 
+/* Style for input fields when focused */
+.form-group input:focus {
+    border: 1px solid #82b3e7; /* Highlight border on focus */
+    background-color: #f3eeee; /* Slightly lighter background in username and password*/
 }

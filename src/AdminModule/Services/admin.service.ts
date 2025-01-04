@@ -32,13 +32,6 @@ export class AdminService {
     });
   }
 
-  getAllReviews(): Observable<any> {
- 
-    return this.httpClient.get(this.baseUrl+"reviews", {
-      responseType: 'json'
-    });
-  }
-
   getAllAgency(): Observable<any> {
  
     return this.httpClient.get(this.baseUrl+"agencies", {

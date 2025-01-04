@@ -1,30 +1,32 @@
+<div class="background">
 <!-- new-customer.component.html -->
+
 <div class="container">
-    <h2>Create New Customer</h2>
-  
-    <!-- Error message display -->
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
-  
-    <!-- Form to add customer -->
-    <form (ngSubmit)="addCustomer()">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" class="form-control" [(ngModel)]="newCustomer.name" name="name" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" class="form-control" [(ngModel)]="newCustomer.email" name="email" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" class="form-control" [(ngModel)]="newCustomer.phone" name="phone" required>
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Add Customer</button>
-    </form>
+  <h2>Create New Customer</h2>
+ 
+  <!-- Error message display -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
   </div>
-  
+ 
+  <!-- Form to add customer -->
+  <form (ngSubmit)="addCustomer()" class="search-form">
+    <div class="form-group">
+      <label for="name"><i class="fas fa-user"></i> Name:</label>
+      <input type="text" id="name" class="form-control" [(ngModel)]="newCustomer.name" name="name" required>
+    </div>
+ 
+    <div class="form-group">
+      <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+      <input type="email" id="email" class="form-control" [(ngModel)]="newCustomer.email" name="email" required>
+    </div>
+ 
+    <div class="form-group">
+      <label for="phone"><i class="fas fa-phone"></i> Phone:</label>
+      <input type="text" id="phone" class="form-control" [(ngModel)]="newCustomer.phone" name="phone" required>
+    </div>
+ 
+    <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i>Create</button>
+  </form>
+</div>
+</div>
