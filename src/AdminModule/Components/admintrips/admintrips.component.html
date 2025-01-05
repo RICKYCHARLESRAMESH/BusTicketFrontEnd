@@ -15,9 +15,48 @@
       <button class="logout-btn" (click)="logout()">Logout</button>
   </div>
   </div>
-  <div class="content-container">
  
-    <!-- Trips Table -->
+ 
+  <!-- Search by Trip ID -->
+<!-- Search by Trip ID -->
+<div style="text-align: left; margin-top: 0.1px; margin-left: 20px;">
+  <h1 style="font-size: 15px; color: #080707;">Search Trip by ID</h1>
+  <div>
+    <input
+      type="number"
+      [(ngModel)]="tripId"
+      placeholder="Enter Trip ID"
+      style="padding: 5px; width: 250px; margin-right: 10px;"
+    />
+    <button
+      (click)="searchTrip()"
+      style="padding: 5px 20px; cursor: pointer; background-color: #ef5d0e; color: white; border: none; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); transition: background-color 0.3s;">
+      Search by ID
+    </button>
+  </div>
+</div>
+ 
+<!-- Search by Trip Date (Aligned to the Right) -->
+<div style="margin-top: -68px; float: right; margin-right: 20px;">
+  <h1 style="font-size: 15px; color: #080707;">Search Trip by DateAndTime</h1>
+  <input
+    type="datetime-local"
+    id="tripDate"
+    [(ngModel)]="tripDate"
+    style="padding: 5px; margin-right: 10px; width: 250px;"
+  />
+  <button
+    (click)="searchTripByDate()"
+    style="padding: 5px 20px; cursor: pointer; background-color: #ef5d0e; color: white;border: none; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); transition: background-color 0.3s;">
+    Search by Date
+  </button>
+</div>
+ 
+ 
+ 
+ 
+  <!-- Filtered Trips Table -->
+  <div class="content-container">
     <div class="content">
       <h2 style="text-align: center;">Manage Trips</h2>
       <table>
@@ -34,22 +73,23 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let t of trip">
-                <td>{{ t.id }}</td>
-                <td>{{ t.availableSeats }}</td>
-                <td>{{ t.arrivalTime }}</td>
-                <td>{{ t.departureTime }}</td>
-                <td>{{ t.fare }}</td>
-                <td>{{ t.boardingAddressId }}</td>
-                <td>{{ t.droppingAddressId }}</td>
-                <td>{{ t.tripDate }}</td>
-              </tr>
+          <tr *ngFor="let t of filteredTrips">
+            <td>{{ t.id }}</td>
+            <td>{{ t.availableSeats }}</td>
+            <td>{{ t.arrivalTime }}</td>
+            <td>{{ t.departureTime }}</td>
+            <td>{{ t.fare }}</td>
+            <td>{{ t.boardingAddressId }}</td>
+            <td>{{ t.droppingAddressId }}</td>
+            <td>{{ t.tripDate }}</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
+</div>
  
-    
+   
   <script>
     function logout() {
         location.href = '/';

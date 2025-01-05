@@ -220,6 +220,11 @@ export class AdminService {
     });
   }
 
+  getTripById(id:number):Observable<any> {
+    return this.httpClient.get(this.baseUrl+`trips/${id}`,{
+      responseType: 'text'
+    });
+  }
 
 
 
