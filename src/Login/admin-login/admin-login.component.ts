@@ -30,7 +30,7 @@ export class AdminLoginComponent{
     },
     (error) => {
       console.error('Error saving user:', error);
-      alert(JSON.stringify(error));
+      alert(JSON.stringify("Invalid credentials"));
     });
     
   }

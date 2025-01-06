@@ -1,40 +1,79 @@
 <div class="background">
-<div class="login-container">
-    <h1>Customer Registration</h1>
-    <form (ngSubmit)="UserRegister()">
-        <div class="form-group">
-            <label for="username">Enter User Name</label>
-            <input type="text" id="username" [(ngModel)]="user.username" name="username" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Enter Password</label>
-            <input type="password" id="password" [(ngModel)]="user.password" name="password" required />
-        </div>
-        <input type="submit" value="Register" />
-    </form>
-</div>
+  <div class="login-container">
+      <h1>Customer Registration</h1>
+      <form (ngSubmit)="UserRegister()" #customerRegisterForm="ngForm">
+          <!-- Username Field -->
+          <div class="form-group">
+              <label for="username">Enter User Name</label>
+              <input
+                  type="text"
+                  id="username"
+                  [(ngModel)]="user.username"
+                  name="username"
+                  #username="ngModel"
+                  required
+                  minlength="3"
+              />
+              <!-- Validation Feedback for Username -->
+              <div *ngIf="username.invalid && username.touched" class="error">
+                  <span *ngIf="username.errors?.['required']">Username is required.</span>
+                  <span *ngIf="username.errors?.['minlength']">
+                      Username must be at least 3 characters long.
+                  </span>
+              </div>
+          </div>
 
-<div
-  class="modal fade show d-block"
-  *ngIf="showModal"
-  style="background-color: rgba(0, 0, 0, 0.5);"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">{{ message }}</h5>
+          <!-- Password Field -->
+          <div class="form-group">
+              <label for="password">Enter Password</label>
+              <input
+                  type="password"
+                  id="password"
+                  [(ngModel)]="user.password"
+                  name="password"
+                  #password="ngModel"
+                  required
+                  minlength="6"
+              />
+              <!-- Validation Feedback for Password -->
+              <div *ngIf="password.invalid && password.touched" class="error">
+                  <span *ngIf="password.errors?.['required']">Password is required.</span>
+                  <span *ngIf="password.errors?.['minlength']">
+                      Password must be at least 6 characters long.
+                  </span>
+              </div>
+          </div>
+
+          <!-- Submit Button -->
+          <input
+              type="submit"
+              value="Register"
+              [disabled]="customerRegisterForm.invalid"
+          />
+      </form>
+  </div>
+
+  <!-- Modal for Success/Error Messages -->
+  <div
+      class="modal fade show d-block"
+      *ngIf="showModal"
+      style="background-color: rgba(0, 0, 0, 0.5);"
+  >
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">{{ message }}</h5>
+              </div>
+              <div class="modal-footer">
+                  <button
+                      type="button"
+                      class="btn btn-secondary"
+                      (click)="showModal = false"
+                  >
+                      Close
+                  </button>
+              </div>
+          </div>
       </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="showModal = false"
-        >
-          Close
-        </button>
-      </div>
-    </div>
   </div>
 </div>
-</div> 
- 

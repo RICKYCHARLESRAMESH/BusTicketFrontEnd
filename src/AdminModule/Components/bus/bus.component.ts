@@ -52,20 +52,7 @@ export class BusComponent implements OnInit {
     this.isTrue = true;
   }
 
-  saveNewBuses(): void {
-    this.adminService.saveNewBuses(this.newBus).subscribe(
-      (response) => {
-        console.log('Bus added successfully:', response);
-        this.isTrue = false;
-        this.newBus = {};
-        this.getAllBuses(); // Refresh the list of buses
-      },
-      (error) => {
-        console.error('Error adding bus:', error);
-        this.errorMessage = 'Failed to add the bus. Please try again.';
-      }
-    );
-  }
+  
 
   updateBus(busId: number): void {
     this.adminService.updateBus(this.editBus, busId).subscribe(

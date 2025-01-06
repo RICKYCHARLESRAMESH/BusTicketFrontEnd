@@ -164,12 +164,7 @@ export class AdminService {
 
    // BUSES
 
-   saveNewBuses(bus:Bus): Observable<any> {
- 
-    return this.httpClient.post(this.baseUrl+"buses",bus, {
-      responseType: 'text'
-    });
-  }
+  
   updateBus(busDetails: Bus,busId: Number, ): Observable<any> {
  
     return this.httpClient.put(this.baseUrl+`buses/${busId}`,busDetails, {
@@ -237,13 +232,13 @@ export class AdminService {
 
 }
 
-//REVIEWS
+// //REVIEWS
 
-getReviewById(reviewId:number): Observable<any> {
-  return this.httpClient.get(this.baseUrl+`reviews/${reviewId}`,{
-    responseType: 'json'
-  });
-}
+// getReviewById(reviewId:number): Observable<any> {
+//   return this.httpClient.get(this.baseUrl+`reviews/${reviewId}`,{
+//     responseType: 'json'
+//   });
+// }
 
 
 // PAYMENTS

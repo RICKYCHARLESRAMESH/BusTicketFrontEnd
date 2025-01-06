@@ -42,7 +42,7 @@ export class DriverLoginComponent {
     },
     (error) => {
       console.error('Error saving user:', error);
-      alert(JSON.stringify(error));
+      alert(JSON.stringify("Invalid Credentials"));
     });
     
   }

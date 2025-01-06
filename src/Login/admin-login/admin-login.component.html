@@ -1,15 +1,54 @@
 <div class="background"></div>
 <div class="login-container">
     <h1>Admin Login</h1>
-    <form (submit)="AdminLogin()">
+    <form (ngSubmit)="AdminLogin()" #loginForm="ngForm">
+        <!-- Username Field -->
         <div class="form-group">
             <label for="username">Enter User Name</label>
-            <input type="text" id="username" [(ngModel)]="user.username" name="username" required />
+            <input
+                type="text"
+                id="username"
+                [(ngModel)]="user.username"
+                name="username"
+                #username="ngModel"
+                required
+                minlength="3"
+            />
+            <!-- Validation Feedback for Username -->
+            <div *ngIf="username.invalid && username.touched" class="error">
+                <span *ngIf="username.errors?.['required']">Username is required.</span>
+                <span *ngIf="username.errors?.['minlength']">
+                    Username must be at least 3 characters long.
+                </span>
+            </div>
         </div>
+
+        <!-- Password Field -->
         <div class="form-group">
             <label for="password">Enter Password</label>
-            <input type="password" id="password" [(ngModel)]="user.password" name="password" required />
+            <input
+                type="password"
+                id="password"
+                [(ngModel)]="user.password"
+                name="password"
+                #password="ngModel"
+                required
+                minlength="6"
+            />
+            <!-- Validation Feedback for Password -->
+            <div *ngIf="password.invalid && password.touched" class="error">
+                <span *ngIf="password.errors?.['required']">Password is required.</span>
+                <span *ngIf="password.errors?.['minlength']">
+                    Password must be at least 6 characters long.
+                </span>
+            </div>
         </div>
-        <input type="submit" value="Login" />
+
+        <!-- Submit Button -->
+        <input
+            type="submit"
+            value="Login"
+            [disabled]="loginForm.invalid"
+        />
     </form>
 </div>
